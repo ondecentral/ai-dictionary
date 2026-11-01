@@ -1,0 +1,34 @@
+{
+  "name": "ai-dictionary",
+  "version": "0.1.0",
+  "description": "Offline CLI + library for looking up AI and math terminology found in whitepapers, explained for JavaScript developers.",
+  "type": "module",
+  "bin": {
+    "aidict": "bin/aidict.js"
+  },
+  "exports": {
+    ".": "./src/index.js"
+  },
+  "files": [
+    "bin",
+    "src",
+    "data"
+  ],
+  "scripts": {
+    "cli": "node bin/aidict.js",
+    "test": "node --test"
+  },
+  "keywords": [
+    "ai",
+    "machine-learning",
+    "math",
+    "glossary",
+    "dictionary",
+    "cli",
+    "offline",
+    "whitepaper"
+  ],
+  "engines": {
+    "node": ">=18.3"
+  }
+}
