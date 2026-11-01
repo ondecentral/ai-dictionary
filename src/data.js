@@ -35,7 +35,8 @@ export const glossaryRows =parseCsv(readFileSync(new URL("../data/glossary.csv",
 
 /**
  * Combine the hand-written entries (data/ai.js, data/math.js) with the glossary CSV.
- * - CSV term matches a curated term or id  -> merged: curated content kept, CSV subject added as a tag.
+ * - CSV term matches a curated term or id  -> merged: curated content kept, CSV subject added as a tag
+ *                                            (and the CSV example, if the curated entry has none).
  * - CSV term matches only a curated alias  -> becomes its own entry; the alias moves off the curated
  *   entry and the two are cross-linked via `related`.
  * - Otherwise                              -> new glossary entry.
@@ -75,6 +76,7 @@ function buildTerms() {
     const merged = byName.get(name) ?? (acronym && curatedAcronyms.get(acronym));
     if (merged) {
       if (!merged.tags.includes(tag)) merged.tags.push(tag);
+      if (row.example && !merged.example) merged.example = row.example;
       continue;
     }
     const entry = {
@@ -85,6 +87,7 @@ function buildTerms() {
       subject: row.category,
       short: row.definition,
       definition: "",
+      ...(row.example && { example: row.example }),
       related: [],
       category: SUBJECT_CATEGORY[row.category] ?? "ai",
       source: "glossary",

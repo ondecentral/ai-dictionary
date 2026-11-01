@@ -23,6 +23,14 @@ test("glossary terms: own entries, merges and acronyms", () => {
   assert.equal(id("heteroscedasticity"), "heteroscedasticity");
 });
 
+test("glossary examples are shown on glossary and merged curated entries", () => {
+  assert.match(lookup("L2 norm").entry.example, /\[3,4\] is 5/);
+  assert.ok(lookup("L2 norm").entry.related.includes("norm"), "alias split links back to the curated entry");
+  assert.ok(lookup("teacher forcing").entry.example, "curated entry picks up the CSV example");
+  assert.equal(id("JEPA"), "joint-embedding-predictive-architecture");
+  assert.equal(id("exponential"), "exponential-function");
+});
+
 test("typos still find the term", () => {
   assert.equal(id("sofmax"), "softmax");
   assert.equal(id("backpropogation"), "backpropagation");

@@ -468,7 +468,7 @@ function step(xNew) {
     tags: ["llm", "nlp"],
     short: "The unit of text a language model reads and writes — usually a word piece.",
     definition:
-      "Models don't see characters or words; they see integer IDs from a fixed vocabulary of ~30k–200k tokens. Common words are a single token, rare words split into several (\"tokenization\" → \"token\" + \"ization\"). In English one token averages roughly ¾ of a word. Context limits, pricing and speed are all measured in tokens.",
+      "Models don't see characters or words; they see integer IDs from a fixed vocabulary of ~30k–200k tokens. Common words are a single token, rare words split into several (\"tokenization\" → \"token\" + \"ization\"). In English one token averages roughly ¾ of a word. Context limits, pricing and speed are all measured in tokens. Multimodal models also use tokens for image patches and audio or video codes.",
     js: `// e.g. "Hello world!" -> [9906, 1917, 0]  (IDs depend on the tokenizer)
 const ids = tokenizer.encode("Hello world!");
 const text = tokenizer.decode(ids);`,
