@@ -62,6 +62,9 @@ export function formatEntry(entry, s, { getTerm } = {}) {
     out.push("");
     out.push(wrap(entry.definition, termWidth(), "  "));
   }
+  if (entry.example) {
+    out.push("", wrap(`${s.gray("Example:")} ${entry.example}`, termWidth(), "  "));
+  }
   const explained = explainFormula(entry);
   if (entry.formula) {
     out.push("", s.yellow("Formula"), indentBlock(s.bold(entry.formula), "  "), "");

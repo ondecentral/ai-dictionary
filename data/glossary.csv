@@ -1,4 +1,4 @@
-id,term,category,definition
+id,term,category,definition,example
 1,A* Search,AI General,A pathfinding algorithm that uses a heuristic to estimate the remaining cost and find the shortest path efficiently.
 2,A/B Testing,Data & MLOps,Comparing two versions of a model or product by randomly assigning users to each and measuring outcomes.
 3,Abelian Group,Abstract Algebra,A group whose operation is commutative.
@@ -7,8 +7,8 @@ id,term,category,definition
 6,Abstractive Summarization,NLP & LLMs,Summarizing by generating new sentences that capture the source's meaning.
 7,Accountability,AI Ethics,The principle that people or organizations are answerable for the outcomes of AI systems.
 8,Accuracy,Machine Learning,The fraction of predictions that a model gets correct.
-9,Action,Reinforcement Learning,A choice an agent makes that affects the environment.
-10,Activation Function,Deep Learning,"A nonlinear function applied to a neuron's output, enabling networks to learn complex patterns."
+9,Action,Reinforcement Learning,A choice an agent makes that affects the environment.,"Turn left, accelerate, or brake are actions."
+10,Activation Function,Deep Learning,"A nonlinear function applied to a neuron's output, enabling networks to learn complex patterns.","ReLU(x) returns max(0, x)."
 11,Active Learning,Machine Learning,A strategy where the model selects which unlabeled examples a human should label next to learn most efficiently.
 12,Actor-Critic,Reinforcement Learning,An approach that combines a policy (actor) with a value estimator (critic) that evaluates its actions.
 13,AdaBoost,Machine Learning,A boosting algorithm that reweights training examples so later weak learners focus on previously misclassified cases.
@@ -19,8 +19,8 @@ id,term,category,definition
 18,Adjacency List,Graph Theory,A graph representation listing each vertex's neighbors.
 19,Adjacency Matrix,Graph Theory,A square matrix indicating which pairs of vertices in a graph are connected.
 20,Adversarial Example,AI Safety,An input deliberately modified in a subtle way to cause a model to make a mistake.
-21,Affine Transformation,Linear Algebra,A linear transformation followed by a translation.
-22,Agent,Reinforcement Learning,"In reinforcement learning, the learner and decision-maker that interacts with an environment."
+21,Affine Transformation,Linear Algebra,A linear transformation followed by a translation.,"A dense layer computes Wx + b, which is affine."
+22,Agent,Reinforcement Learning,"In reinforcement learning, the learner and decision-maker that interacts with an environment.","In a game, the agent receives frames and chooses joystick actions."
 23,Agent Identity,AI Agents,A verifiable way to establish which agent is acting and on whose behalf.
 24,Agent Memory,AI Agents,Mechanisms that let an agent store and recall information across steps or sessions.
 25,Agent Swarm,AI Agents,"A large group of AI agents coordinating, often with simple local rules, to accomplish tasks collectively."
@@ -45,21 +45,21 @@ id,term,category,definition
 44,Arithmetic Sequence,Algebra,A sequence in which the difference between consecutive terms is constant.
 45,Artificial General Intelligence,AI General,Hypothetical AI with human-level ability across a broad range of intellectual tasks; abbreviated AGI.
 46,Artificial Intelligence,AI General,"The field of computer science focused on building systems that perform tasks normally requiring human intelligence, such as reasoning, learning, perception, and language use."
-47,Artificial Neuron,Deep Learning,"A basic unit of a neural network that computes a weighted sum of inputs, adds a bias, and applies an activation function."
+47,Artificial Neuron,Deep Learning,"A basic unit of a neural network that computes a weighted sum of inputs, adds a bias, and applies an activation function.",A neuron can compute ReLU(w dot x + b).
 48,Associative Property,Abstract Algebra,"The property that grouping of operands does not change the result, as in (a + b) + c = a + (b + c)."
 49,Asymptote,Calculus,A line that a curve approaches arbitrarily closely as it heads toward infinity.
 50,Attention Mechanism,Deep Learning,A method that lets a model weigh the importance of different parts of its input when producing each output.
 51,AUC,Machine Learning,"Area Under the ROC Curve, a single number summarizing a classifier's ability to rank positives above negatives."
 52,Augmented Matrix,Linear Algebra,A matrix formed by appending the constants of a linear system as an extra column to its coefficient matrix.
 53,Autocorrelation,Statistics,The correlation of a time series with a lagged copy of itself.
-54,Autoencoder,Deep Learning,A network trained to compress input into a smaller representation and then reconstruct it.
+54,Autoencoder,Deep Learning,A network trained to compress input into a smaller representation and then reconstruct it.,"Compress an image to 64 latent values, then reconstruct the pixels."
 55,Automatic Differentiation,Deep Learning,"A technique for computing exact derivatives of functions defined by programs, used to compute gradients."
 56,Autonomy,AI Agents,The degree to which an AI system can act without human intervention.
-57,Autoregressive Model,NLP & LLMs,"A model that generates output one step at a time, with each step conditioned on previous outputs."
+57,Autoregressive Model,NLP & LLMs,"A model that generates output one step at a time, with each step conditioned on previous outputs.",GPT predicts token t from tokens 1 through t-1.
 58,Average Pooling,Deep Learning,Pooling that keeps the average value of each region.
 59,Axiom,Set Theory & Logic,"A statement accepted as true without proof, serving as a starting point for reasoning."
-60,Backpropagation,Deep Learning,The algorithm that computes gradients of the loss with respect to every weight by applying the chain rule backward through the network.
-61,Backward Pass,Deep Learning,The step in training where gradients are computed from the output back to the input layers.
+60,Backpropagation,Deep Learning,The algorithm that computes gradients of the loss with respect to every weight by applying the chain rule backward through the network.,Backprop tells each weight how much changing it would change the current loss.
+61,Backward Pass,Deep Learning,The step in training where gradients are computed from the output back to the input layers.,"After computing loss, backprop calculates gradients for every trainable weight."
 62,Bag of Words,NLP & LLMs,A text representation that counts word occurrences while ignoring order.
 63,Bagging,Machine Learning,Bootstrap aggregating: training models on random resampled subsets of the data and averaging their outputs.
 64,Baseline,Machine Learning,A simple reference model or score used to judge whether a more complex model is actually better.
@@ -67,24 +67,24 @@ id,term,category,definition
 66,Batch,Deep Learning,A subset of training examples processed together in one training step.
 67,Batch Inference,AI Infrastructure,"Running predictions on a large set of inputs at once, rather than one request at a time."
 68,Batch Learning,Machine Learning,Training a model on the full dataset at once rather than incrementally.
-69,Batch Normalization,Deep Learning,Normalizing a layer's inputs across each mini-batch to stabilize and speed up training.
-70,Batch Size,Deep Learning,The number of training examples processed together before the model's parameters are updated.
+69,Batch Normalization,Deep Learning,Normalizing a layer's inputs across each mini-batch to stabilize and speed up training.,ResNet commonly places batch normalization after convolutions.
+70,Batch Size,Deep Learning,The number of training examples processed together before the model's parameters are updated.,GPT-3 training reports batch size in tokens rather than only in sequences.
 71,Bayes' Theorem,Probability,A formula for updating the probability of a hypothesis given new evidence: P(A given B) equals P(B given A) times P(A) divided by P(B).
 72,Bayesian Inference,Statistics,Statistical inference that updates beliefs about parameters using Bayes' theorem as data arrives.
 73,Bayesian Optimization,Machine Learning,"A strategy for optimizing expensive functions, such as hyperparameter searches, by building a probabilistic model of the objective."
-74,Beam Search,NLP & LLMs,A decoding method that keeps several of the most likely partial sequences at each step and picks the best overall.
+74,Beam Search,NLP & LLMs,A decoding method that keeps several of the most likely partial sequences at each step and picks the best overall.,Translation decoding can retain the best 4 candidate sentences after each token.
 75,Bellman Equation,Reinforcement Learning,A recursive equation expressing the value of a state as immediate reward plus the discounted value of next states.
 76,Benchmark,NLP & LLMs,A standardized dataset and evaluation used to compare model performance.
-77,Bernoulli Distribution,Probability,"The distribution of a single trial with two outcomes, success with probability p and failure otherwise."
+77,Bernoulli Distribution,Probability,"The distribution of a single trial with two outcomes, success with probability p and failure otherwise.",A mask bit can be sampled from Bernoulli(p) to decide whether a token is hidden.
 78,BERT,NLP & LLMs,"Bidirectional Encoder Representations from Transformers, an encoder model pretrained with masked language modeling."
 79,Beta Distribution,Probability,"A distribution on the interval 0 to 1, often used to model uncertainty about a probability."
 80,BF16,Deep Learning,"Brain floating point 16-bit format, which keeps the range of 32-bit floats with less precision."
-81,Bias Term,Deep Learning,"A learned constant added to a neuron's weighted sum, allowing the activation to shift."
+81,Bias Term,Deep Learning,"A learned constant added to a neuron's weighted sum, allowing the activation to shift.","The unit computes w dot x + b, where b is the bias."
 82,Bias-Variance Tradeoff,Machine Learning,The tension between error from overly simple assumptions (bias) and error from sensitivity to training data fluctuations (variance).
 83,Biconditional,Set Theory & Logic,"A statement P if and only if Q, true when both have the same truth value."
 84,Bidirectional RNN,Deep Learning,A recurrent network that processes a sequence both forward and backward.
 85,Big Data,Data & MLOps,Datasets so large or complex that traditional processing tools are inadequate.
-86,Big O Notation,Discrete Math,Notation describing an upper bound on how an algorithm's running time or memory grows with input size.
+86,Big O Notation,Discrete Math,Notation describing an upper bound on how an algorithm's running time or memory grows with input size.,O(n^2) grows much faster than O(n) for very large n.
 87,Bijective Function,Set Theory & Logic,"A function that is both injective and surjective, giving a perfect one-to-one correspondence."
 88,Binary Classification,Machine Learning,Classification with exactly two possible classes.
 89,Binomial Coefficient,Discrete Math,"The number of ways to choose k items from n, written n choose k."
@@ -92,7 +92,7 @@ id,term,category,definition
 91,Binomial Theorem,Discrete Math,A formula for expanding powers of a sum (a + b) to the n using binomial coefficients.
 92,Bipartite Graph,Graph Theory,A graph whose vertices split into two groups with edges only between groups.
 93,Bit,Probability,"The basic unit of information, representing a choice between two equally likely options."
-94,BLEU,NLP & LLMs,An automatic metric for machine translation that measures n-gram overlap with reference translations.
+94,BLEU,NLP & LLMs,An automatic metric for machine translation that measures n-gram overlap with reference translations.,A higher BLEU score generally indicates closer overlap with reference translations.
 95,Bonferroni Correction,Statistics,Adjusting the significance level by dividing it by the number of tests performed.
 96,Boolean Algebra,Set Theory & Logic,"The algebra of true and false values with operations AND, OR, and NOT."
 97,Boosting,Machine Learning,Combining many weak learners sequentially so that each focuses on the mistakes of earlier ones.
@@ -101,7 +101,7 @@ id,term,category,definition
 100,Box Plot,Statistics,"A chart summarizing a distribution with its median, quartiles, and outliers."
 101,Breadth-First Search,Graph Theory,A graph traversal that explores all neighbors at the current depth before moving deeper.
 102,Brownian Motion,Probability,A continuous-time random process describing the erratic movement of particles; also called a Wiener process.
-103,Byte Pair Encoding,NLP & LLMs,A subword tokenization method that repeatedly merges the most frequent pairs of characters or symbols.
+103,Byte Pair Encoding,NLP & LLMs,A subword tokenization method that repeatedly merges the most frequent pairs of characters or symbols.,The word 'unhappiness' may be split into several learned subword tokens.
 104,Calibration,Machine Learning,How well a model's predicted probabilities match the actual frequencies of outcomes.
 105,Capsule Network,Deep Learning,A neural architecture that groups neurons into capsules representing properties of objects and their spatial relationships.
 106,Cardinality,Set Theory & Logic,"The number of elements in a set, generalized to infinite sets."
@@ -109,15 +109,15 @@ id,term,category,definition
 108,Cartesian Product,Set Theory & Logic,The set of all ordered pairs formed by taking one element from each of two sets.
 109,Catastrophic Forgetting,Deep Learning,When a neural network loses previously learned knowledge after training on new tasks.
 110,CatBoost,Machine Learning,A gradient-boosting library designed to handle categorical features natively.
-111,Categorical Distribution,Probability,The distribution of a single trial with more than two possible outcomes.
+111,Categorical Distribution,Probability,The distribution of a single trial with more than two possible outcomes.,"Softmax outputs a categorical distribution over 50,000 vocabulary tokens."
 112,Category Theory,Abstract Algebra,A branch of mathematics studying abstract structures and the relationships (morphisms) between them.
 113,Causal Inference,Statistics,Methods for determining cause-and-effect relationships from data.
-114,Causal Mask,Deep Learning,"A mask that prevents a position from attending to future positions, used in autoregressive models."
+114,Causal Mask,Deep Learning,"A mask that prevents a position from attending to future positions, used in autoregressive models.",Token 5 may attend to tokens 1 through 5 but not token 6.
 115,Causation,Statistics,A relationship in which one variable directly produces a change in another.
 116,Central Limit Theorem,Probability,"The theorem that the sum or average of many independent random variables tends toward a normal distribution, regardless of their original distribution."
 117,Centroid,Machine Learning,The mean position of all points in a cluster.
 118,Chain of Thought,NLP & LLMs,Prompting or training a model to write out intermediate reasoning steps before giving a final answer.
-119,Chain Rule,Calculus,The rule for differentiating composite functions: the derivative of f(g(x)) is f'(g(x)) times g'(x).
+119,Chain Rule,Calculus,The rule for differentiating composite functions: the derivative of f(g(x)) is f'(g(x)) times g'(x).,"If y=f(g(x)), then dy/dx = f'(g(x)) times g'(x)."
 120,Change of Basis,Linear Algebra,Re-expressing vectors in terms of a different basis.
 121,Characteristic Polynomial,Linear Algebra,The polynomial det(A minus lambda I) whose roots are the eigenvalues of A.
 122,Checkpoint,Deep Learning,A saved snapshot of a model's parameters and training state at a point during training.
@@ -155,7 +155,7 @@ id,term,category,definition
 154,Concept Drift,Machine Learning,A change over time in the relationship between inputs and the target being predicted.
 155,Condition Number,Linear Algebra,A measure of how sensitive a matrix problem's solution is to small changes in input.
 156,Conditional Independence,Probability,Independence of two variables given knowledge of a third variable.
-157,Conditional Probability,Probability,The probability of an event given that another event has occurred.
+157,Conditional Probability,Probability,The probability of an event given that another event has occurred.,A language model estimates P(next token | previous tokens).
 158,Confidence Interval,Statistics,"A range of values constructed so that, under repeated sampling, it contains the true parameter a specified percentage of the time."
 159,Confounding Variable,Statistics,"A variable that influences both the supposed cause and effect, creating a misleading association."
 160,Confusion Matrix,Machine Learning,"A table showing counts of true positives, false positives, true negatives, and false negatives."
@@ -172,21 +172,21 @@ id,term,category,definition
 171,Constraint Satisfaction Problem,AI General,"A problem defined by variables, possible values, and constraints that a solution must satisfy."
 172,Content-Based Filtering,Machine Learning,Recommending items similar in their attributes to those a user liked before.
 173,Context Length,NLP & LLMs,The number of tokens of input a model can process in a single request.
-174,Context Window,NLP & LLMs,"The maximum number of tokens a language model can consider at once, including input and output."
+174,Context Window,NLP & LLMs,"The maximum number of tokens a language model can consider at once, including input and output.","A model with a 4,096-token context cannot directly attend beyond that window."
 175,Continual Learning,Machine Learning,Training a model on a sequence of tasks or data over time while retaining earlier knowledge.
 176,Continuity,Calculus,"A property of a function with no breaks, jumps, or holes; its limit equals its value at each point."
 177,Continuous Random Variable,Probability,A random variable that can take any value within an interval.
 178,Contradiction,Set Theory & Logic,A statement that is false under every possible assignment of truth values.
 179,Contrapositive,Set Theory & Logic,"The statement if not Q then not P, logically equivalent to if P then Q."
-180,Contrastive Learning,Deep Learning,Learning representations by pulling similar pairs together and pushing dissimilar pairs apart in embedding space.
-181,Convergence,Calculus,The property of a sequence or series approaching a finite limit.
+180,Contrastive Learning,Deep Learning,Learning representations by pulling similar pairs together and pushing dissimilar pairs apart in embedding space.,Two crops of the same photo are positives; crops from other photos are negatives.
+181,Convergence,Calculus,"The property of a sequence, series or iterative method (such as an optimizer) approaching a finite limit or stable solution.",Training loss may converge when further updates no longer improve it much.
 182,Converse,Set Theory & Logic,"The statement if Q then P, formed by reversing an implication."
-183,Convex Function,Optimization,"A function whose line segment between any two points on its graph lies on or above the graph, guaranteeing any local minimum is global."
+183,Convex Function,Optimization,"A function whose line segment between any two points on its graph lies on or above the graph, guaranteeing any local minimum is global.","For a convex loss, every local minimum is also global."
 184,Convex Optimization,Optimization,"Minimizing a convex function over a convex set, a class of problems that can be solved efficiently."
 185,Convex Set,Optimization,A set in which the line segment between any two points lies entirely within the set.
-186,Convolution,Deep Learning,An operation that slides a small filter across input data and computes weighted sums to detect local features.
+186,Convolution,Deep Learning,An operation that slides a small filter across input data and computes weighted sums to detect local features.,A 3x3 image filter is applied at every spatial location.
 187,Convolution Integral,Calculus,An integral expressing how the shape of one function is modified by another.
-188,Convolutional Neural Network,Deep Learning,"A network that uses convolution operations to detect local patterns, especially effective for images."
+188,Convolutional Neural Network,Deep Learning,"A network that uses convolution operations to detect local patterns, especially effective for images.",AlexNet is a CNN trained for ImageNet classification.
 189,Coordinate System,Geometry,A system that uses numbers to specify the position of points in space.
 190,Coprime,Number Theory,Two integers whose greatest common divisor is 1; also called relatively prime.
 191,Coreference Resolution,NLP & LLMs,Determining which expressions in a text refer to the same entity.
@@ -199,23 +199,23 @@ id,term,category,definition
 198,Cost Function,Machine Learning,"The average loss over a dataset, sometimes including regularization terms; often used interchangeably with loss function."
 199,Countable Set,Set Theory & Logic,A set whose elements can be listed in a sequence matched one-to-one with the natural numbers.
 200,Counterexample,Set Theory & Logic,An example that shows a general statement is false.
-201,Covariance,Probability,A measure of how two random variables change together.
-202,Covariance Matrix,Probability,A square matrix giving the covariances between every pair of variables in a random vector.
+201,Covariance,Probability,A measure of how two random variables change together.,Positive covariance means two features tend to rise and fall together.
+202,Covariance Matrix,Probability,"A square matrix giving the covariances between every pair of variables in a random vector, with each variable's variance on the diagonal.",PCA finds principal directions from a covariance matrix.
 203,Covariate Shift,Machine Learning,A change in the distribution of input features while the input-output relationship stays the same.
 204,Credible Interval,Statistics,"In Bayesian statistics, an interval containing a parameter with a specified posterior probability."
 205,Critical Point,Calculus,A point where a function's derivative is zero or undefined.
 206,Cross Product,Linear Algebra,An operation on two 3D vectors that produces a vector perpendicular to both.
-207,Cross-Attention,Deep Learning,"Attention in which one sequence attends to another, such as a decoder attending to encoder outputs."
-208,Cross-Entropy,Probability,A measure of the average number of bits needed to encode data from one distribution using a code optimized for another.
+207,Cross-Attention,Deep Learning,"Attention in which queries come from one sequence and keys and values from another, such as a decoder attending to encoder outputs.",A decoder token can attend to encoded source-language tokens.
+208,Cross-Entropy,Probability,A measure of the average number of bits needed to encode data from one distribution using a code optimized for another.,"If the correct token gets probability 0.9, cross-entropy is much lower than if it gets 0.01."
 209,Cross-Entropy Loss,Machine Learning,A loss for classification that measures the difference between predicted probabilities and the true class distribution.
-210,Cross-Validation,Machine Learning,A technique that repeatedly splits data into training and validation parts to estimate model performance more reliably.
+210,Cross-Validation,Machine Learning,A technique that repeatedly splits data into training and validation parts to estimate model performance more reliably.,"In 5-fold cross-validation, each fifth of the data serves as validation once."
 211,CUDA,AI Infrastructure,NVIDIA's platform and programming model for running general computations on GPUs.
 212,Cumulative Distribution Function,Probability,A function giving the probability that a random variable is less than or equal to a value; abbreviated CDF.
 213,Curl,Calculus,A vector operator measuring the rotation of a vector field at a point.
-214,Curse of Dimensionality,Machine Learning,"Problems that arise as the number of features grows, such as data becoming sparse and distances less meaningful."
+214,Curse of Dimensionality,Machine Learning,"Problems that arise as the number of features grows: the data needed grows rapidly, points become sparse and distances less meaningful.","Randomly covering a 1,000-dimensional space requires an astronomical number of samples."
 215,Curvature,Geometry,A measure of how much a curve or surface bends.
 216,Cycle,Graph Theory,A path that starts and ends at the same vertex without repeating edges.
-217,Data Augmentation,Machine Learning,"Creating modified copies of training data, such as rotated images or paraphrased text, to increase variety."
+217,Data Augmentation,Machine Learning,"Creating modified, label-preserving copies of training data, such as rotated images or paraphrased text, to increase variety and improve generalization.",Randomly crop and horizontally flip training images.
 218,Data Cleaning,Data & MLOps,"Detecting and correcting errors, inconsistencies, and missing values in data."
 219,Data Labeling,Data & MLOps,The process of annotating data with correct outputs for supervised learning.
 220,Data Lake,Data & MLOps,A storage repository holding large amounts of raw data in its native format.
@@ -230,7 +230,7 @@ id,term,category,definition
 229,De Morgan's Laws,Set Theory & Logic,"Rules stating that the negation of an AND is the OR of negations, and the negation of an OR is the AND of negations."
 230,Decision Threshold,Machine Learning,The cutoff probability above which a classifier assigns the positive class.
 231,Decision Tree,Machine Learning,"A model that makes predictions by following a series of if-then splits on feature values, forming a tree structure."
-232,Decoder,Deep Learning,The part of a model that generates output from an internal representation.
+232,Decoder,Deep Learning,The part of a model that generates output from an internal representation.,A VAE decoder maps latent z back into an image.
 233,Decoder-Only Model,NLP & LLMs,"A transformer that uses only the decoder stack with causal masking, typical of modern chat LLMs."
 234,Decoding,NLP & LLMs,The process of turning a model's predicted probabilities into an output sequence.
 235,Deep Learning,Deep Learning,Machine learning using neural networks with many layers that learn increasingly abstract representations of data.
@@ -241,23 +241,23 @@ id,term,category,definition
 240,Degree of a Polynomial,Algebra,The highest power of the variable in a polynomial.
 241,Degrees of Freedom,Statistics,The number of independent values free to vary when computing a statistic.
 242,Demographic Parity,AI Ethics,A fairness criterion requiring positive outcomes at equal rates across groups.
-243,Denoising,Deep Learning,"Removing noise from data; in diffusion models, the learned step of predicting and removing added noise."
+243,Denoising,Deep Learning,"Removing noise from data; in diffusion models, the learned step of predicting and removing added noise.","At each diffusion step, the model estimates how to move a noisy latent toward clean video."
 244,Dense Model,Deep Learning,A model in which all parameters are used for every input.
 245,Dependency Parsing,NLP & LLMs,Analyzing the grammatical structure of a sentence by identifying relationships between words.
 246,Dependent Variable,Statistics,The outcome variable being predicted or explained.
 247,Depth-First Search,Graph Theory,A graph traversal that explores as far as possible along each branch before backtracking.
-248,Derivative,Calculus,"The instantaneous rate of change of a function, equal to the slope of its tangent line."
+248,Derivative,Calculus,"The instantaneous rate of change of a function, equal to the slope of its tangent line.","For f(x)=x^2, the derivative is 2x."
 249,Descriptive Statistics,Statistics,Statistics that summarize and describe features of a dataset.
 250,Determinant,Linear Algebra,A scalar computed from a square matrix indicating how it scales volume; zero means the matrix is not invertible.
 251,Diagonal Matrix,Linear Algebra,A square matrix whose entries outside the main diagonal are all zero.
 252,Diagonalization,Linear Algebra,"Expressing a matrix as PDP inverse, where D is diagonal, making powers and functions easy to compute."
-253,Differentiable,Calculus,Describes a function that has a derivative at a point or across an interval.
+253,Differentiable,Calculus,"Describes a function that has a derivative at a point or across an interval, which makes gradient-based optimization possible.",A differentiable world model can pass planning gradients back through predicted future states.
 254,Differential Equation,Calculus,An equation relating a function to its derivatives.
 255,Differential Privacy,AI Ethics,A mathematical framework for sharing information about a dataset while limiting what can be learned about any individual.
 256,Differentiation,Calculus,The process of computing a derivative.
-257,Diffusion Model,Deep Learning,A generative model that learns to create data by reversing a gradual process of adding noise.
+257,Diffusion Model,Deep Learning,A generative model that learns to create data by reversing a gradual process of adding noise.,Start from Gaussian noise and iteratively denoise toward an image or video sample.
 258,Dijkstra's Algorithm,Graph Theory,An algorithm for finding shortest paths from a source vertex in a graph with nonnegative edge weights.
-259,Dimension,Linear Algebra,"The number of vectors in a basis of a vector space; informally, the number of independent directions."
+259,Dimension,Linear Algebra,"The number of vectors in a basis of a vector space; informally, the number of independent directions or coordinates.",A 512-dimensional embedding contains 512 numeric coordinates.
 260,Dimensionality Reduction,Machine Learning,Reducing the number of input variables while preserving as much useful information as possible.
 261,Diophantine Equation,Number Theory,A polynomial equation for which only integer solutions are sought.
 262,Direct Preference Optimization,NLP & LLMs,"A method for aligning models to preference data directly, without training a separate reward model; abbreviated DPO."
@@ -267,11 +267,11 @@ id,term,category,definition
 266,Directional Derivative,Calculus,The rate of change of a function in a specified direction.
 267,Dirichlet Distribution,Probability,"A distribution over probability vectors, often used as a prior for categorical probabilities."
 268,Discontinuity,Calculus,A point where a function is not continuous.
-269,Discount Factor,Reinforcement Learning,A number between 0 and 1 that determines how much an agent values future rewards compared to immediate ones.
+269,Discount Factor,Reinforcement Learning,A number between 0 and 1 that determines how much an agent values future rewards compared to immediate ones.,"With gamma=0.99, a reward 100 steps away counts less than an immediate reward."
 270,Discrete Random Variable,Probability,A random variable that takes a countable set of distinct values.
 271,Discriminant,Algebra,"The quantity b squared minus 4ac, which determines the number and type of roots of a quadratic."
-272,Discriminative Model,Deep Learning,A model that learns to distinguish between classes or predict outputs directly from inputs.
-273,Discriminator,Deep Learning,"In a GAN, the network that tries to distinguish real data from generated data."
+272,Discriminative Model,Deep Learning,A model that learns to distinguish between classes or predict outputs directly from inputs.,A discriminator predicts whether an image is real or generated.
+273,Discriminator,Deep Learning,"In a GAN, the network that tries to distinguish real data from generated data.",D(x) outputs a high score for real training examples.
 274,Disjunction,Set Theory & Logic,"The logical OR of two propositions, true if at least one is true."
 275,Distillation,Deep Learning,Short for knowledge distillation: compressing a large model's behavior into a smaller one.
 276,Distribution Shift,Machine Learning,A change between the data a model was trained on and the data it sees in use.
@@ -282,9 +282,9 @@ id,term,category,definition
 281,Divisor,Number Theory,An integer that divides another integer with no remainder.
 282,Domain,Calculus,The set of all inputs for which a function is defined.
 283,Domain Adaptation,Machine Learning,Adjusting a model trained on one data distribution to work well on a different one.
-284,Dot Product,Linear Algebra,The sum of the products of corresponding entries of two vectors; equals the product of their lengths and the cosine of the angle between them.
+284,Dot Product,Linear Algebra,The sum of the products of corresponding entries of two vectors; equals the product of their lengths and the cosine of the angle between them.,Attention scores start from the dot product of a query and key.
 285,Double Descent,Deep Learning,"A phenomenon where test error decreases, rises, then decreases again as model size or training time increases."
-286,Dropout,Deep Learning,A regularization technique that randomly disables a fraction of neurons during each training step.
+286,Dropout,Deep Learning,A regularization technique that randomly disables a fraction of neurons during each training step.,"With 50 percent dropout, roughly half of selected hidden activations are removed on each training pass."
 287,Duality,Optimization,The principle that an optimization problem can be viewed from a related dual problem whose solution bounds the original.
 288,Dynamic Programming,Discrete Math,Solving problems by breaking them into overlapping subproblems and storing their solutions to avoid recomputation.
 289,Early Stopping,Deep Learning,"Halting training when validation performance stops improving, to prevent overfitting."
@@ -293,27 +293,27 @@ id,term,category,definition
 292,Edge Detection,Computer Vision,"Identifying points in an image where brightness changes sharply, marking object boundaries."
 293,Effect Size,Statistics,"A measure of the magnitude of a difference or relationship, independent of sample size."
 294,Eigendecomposition,Linear Algebra,Factoring a matrix into its eigenvectors and eigenvalues.
-295,Eigenvalue,Linear Algebra,A scalar lambda such that a matrix times some nonzero vector equals lambda times that vector.
-296,Eigenvector,Linear Algebra,A nonzero vector whose direction is unchanged when a matrix is applied; it is only scaled by the eigenvalue.
+295,Eigenvalue,Linear Algebra,A scalar lambda such that a matrix times some nonzero vector equals lambda times that vector.,"In PCA, a larger eigenvalue means more variance along that principal direction."
+296,Eigenvector,Linear Algebra,A nonzero vector whose direction is unchanged when a matrix is applied; it is only scaled by the eigenvalue.,PCA uses covariance-matrix eigenvectors as principal directions.
 297,Elastic Net,Machine Learning,A regularization method combining L1 and L2 penalties.
 298,Element,Set Theory & Logic,An object that belongs to a set.
 299,Ellipse,Geometry,An oval curve consisting of points whose distances to two fixed points sum to a constant.
 300,Elliptic Curve Cryptography,Number Theory,Public-key cryptography based on the algebraic structure of elliptic curves over finite fields.
-301,Embedding,Deep Learning,"A dense vector representation of an item, such as a word or image, where similar items have similar vectors."
+301,Embedding,Deep Learning,"A dense vector representation of an item, such as a word or image, where similar items have similar vectors.",The token 'cat' maps to a learned embedding vector.
 302,Embedding Layer,Deep Learning,A lookup table layer that maps discrete tokens to learned dense vectors.
 303,Embodied AI,AI General,AI systems that perceive and act through a physical or simulated body.
 304,Emergent Abilities,NLP & LLMs,Capabilities that appear in larger models but are absent or weak in smaller ones.
 305,Empty Set,Set Theory & Logic,The unique set containing no elements.
-306,Encoder,Deep Learning,The part of a model that converts input into an internal representation.
+306,Encoder,Deep Learning,The part of a model that converts input into an internal representation.,BERT's Transformer stack encodes tokens into contextual vectors.
 307,Encoder-Decoder,Deep Learning,An architecture pairing an encoder that reads input with a decoder that produces output.
 308,Encoder-Only Model,NLP & LLMs,"A transformer that uses only the encoder stack, typically for understanding tasks like classification."
-309,Energy-Based Model,Deep Learning,"A model that assigns a scalar energy to each configuration, with low energy for likely data."
+309,Energy-Based Model,Deep Learning,"A model that assigns a scalar energy to each configuration, with low energy for likely data; the energies need not form normalized probabilities.","An EBM learns E(x,y) so compatible x,y pairs have low energy."
 310,Ensemble Learning,Machine Learning,Combining multiple models to produce better predictions than any single model.
 311,Entity Resolution,Data & MLOps,Determining which records across datasets refer to the same real-world entity; also called record linkage.
-312,Entropy,Probability,"In information theory, a measure of the uncertainty or average information content of a random variable."
-313,Environment,Reinforcement Learning,"Everything an agent interacts with, which responds to actions with new states and rewards."
-314,Episode,Reinforcement Learning,A complete sequence of interactions from a starting state to a terminal state.
-315,Epoch,Deep Learning,One complete pass through the entire training dataset.
+312,Entropy,Probability,"In information theory, a measure of the uncertainty or average information content of a random variable.","A uniform four-class distribution has higher entropy than [0.97,0.01,0.01,0.01]."
+313,Environment,Reinforcement Learning,"Everything an agent interacts with, which responds to actions with new states and rewards.",A simulated racetrack is the agent's environment.
+314,Episode,Reinforcement Learning,A complete sequence of interactions from a starting state to a terminal state.,A racing episode ends when the car crashes or the time limit expires.
+315,Epoch,Deep Learning,One complete pass through the entire training dataset.,Training for 10 epochs means each example is seen about 10 times.
 316,Epsilon-Delta Definition,Calculus,The rigorous definition of a limit using arbitrarily small distances epsilon and delta.
 317,Epsilon-Greedy,Reinforcement Learning,A strategy that picks a random action with probability epsilon and the best-known action otherwise.
 318,Equalized Odds,AI Ethics,A fairness criterion requiring equal true positive and false positive rates across groups.
@@ -323,7 +323,7 @@ id,term,category,definition
 322,Estimator,Statistics,A rule or formula for estimating a population parameter from sample data.
 323,ETL,Data & MLOps,"Extract, Transform, Load: the process of moving data from sources into a destination system in usable form."
 324,Euclidean Algorithm,Number Theory,An efficient method for computing the greatest common divisor of two integers.
-325,Euclidean Distance,Geometry,The straight-line distance between two points.
+325,Euclidean Distance,Geometry,The straight-line distance between two points.,"The distance between [0,0] and [3,4] is 5."
 326,Euclidean Geometry,Geometry,"Geometry based on Euclid's axioms, describing flat space."
 327,Euclidean Norm,Linear Algebra,The square root of the sum of squared vector entries; the ordinary length of a vector; also called the L2 norm.
 328,Euler Path,Graph Theory,A path that uses every edge of a graph exactly once.
@@ -344,7 +344,7 @@ id,term,category,definition
 343,Exploration vs Exploitation,Reinforcement Learning,The tradeoff between trying new actions to learn more and choosing known actions that give high reward.
 344,Exponent,Algebra,A number indicating how many times a base is multiplied by itself.
 345,Exponential Distribution,Probability,The distribution of waiting times between events in a Poisson process.
-346,Exponential Function,Calculus,"A function of the form a to the x; especially e to the x, which is its own derivative."
+346,Exponential Function,Calculus,"A function of the form a to the x; especially e to the x, which is its own derivative and appears throughout softmax, probability distributions and continuous-time models.",Softmax exponentiates each logit before normalizing.
 347,Expression,Algebra,"A combination of numbers, variables, and operations without an equals sign."
 348,Extractive Summarization,NLP & LLMs,Summarizing by selecting important sentences directly from the source text.
 349,Extrapolation,Optimization,Estimating values beyond the range of known data points.
@@ -357,10 +357,10 @@ id,term,category,definition
 356,False Negative,Machine Learning,A case where the model predicts negative but the true class is positive; a Type II error.
 357,False Positive,Machine Learning,A case where the model predicts positive but the true class is negative; a Type I error.
 358,Feasible Region,Optimization,The set of all points satisfying an optimization problem's constraints.
-359,Feature,Machine Learning,An individual measurable property or input variable used by a model to make predictions.
+359,Feature,Machine Learning,An individual measurable property or input variable used by a model to make predictions.,A convolutional feature may respond strongly to vertical edges.
 360,Feature Engineering,Machine Learning,"The process of creating, selecting, or transforming input variables to improve model performance."
 361,Feature Importance,Machine Learning,A score indicating how much each input feature contributes to a model's predictions.
-362,Feature Map,Deep Learning,"The output of applying a convolutional filter to an input, showing where a feature appears."
+362,Feature Map,Deep Learning,"The output of applying a convolutional filter to an input, showing where a feature appears.",A 224x224 image may become many smaller feature maps after convolution and pooling.
 363,Feature Scaling,Machine Learning,Transforming features to a common range or distribution so no single feature dominates due to its units.
 364,Feature Selection,Machine Learning,Choosing a subset of the most relevant input variables to reduce noise and complexity.
 365,Feature Store,Data & MLOps,"A system for storing, managing, and serving features consistently for training and inference."
@@ -368,18 +368,18 @@ id,term,category,definition
 367,Feedforward Layer,Deep Learning,The position-wise fully connected sublayer in a transformer block applied after attention.
 368,Feedforward Neural Network,Deep Learning,"A network in which information flows in one direction from input to output, without loops."
 369,Fermat's Little Theorem,Number Theory,"If p is prime and a is not divisible by p, then a to the power p minus 1 is congruent to 1 modulo p."
-370,Few-Shot Learning,NLP & LLMs,"Performing a task after seeing only a small number of examples, often provided in the prompt."
+370,Few-Shot Learning,NLP & LLMs,"Performing a task after seeing only a small number of examples, often provided in the prompt.","Provide five input-output examples in the prompt, then ask the model to continue the pattern."
 371,Fibonacci Sequence,Discrete Math,"The sequence in which each number is the sum of the two preceding ones: 0, 1, 1, 2, 3, 5, 8, and so on."
 372,Field,Abstract Algebra,"A ring in which every nonzero element has a multiplicative inverse, such as the rational or real numbers."
-373,Fine-Tuning,Deep Learning,"Continuing to train a pretrained model on a smaller, task-specific dataset."
+373,Fine-Tuning,Deep Learning,"Continuing to train a pretrained model on a smaller, task-specific dataset.",Fine-tune BERT on sentiment labels for a few epochs.
 374,Finite Field,Abstract Algebra,A field with a finite number of elements; also called a Galois field.
 375,Finite State Machine,Discrete Math,A model of computation with a finite number of states and transitions between them based on inputs.
 376,Flash Attention,Deep Learning,An optimized implementation of attention that reduces memory reads and writes to speed up computation.
 377,Floating-Point Number,Optimization,"A computer representation of real numbers using a significand and exponent, with limited precision."
 378,FLOPs,AI Infrastructure,"Floating-point operations, a measure of the amount of computation required by a model or task."
 379,Forecasting,Machine Learning,Predicting future values of a quantity based on its past and other relevant data.
-380,Forward Pass,Deep Learning,Computing a network's output by passing input data through each layer in order.
-381,Foundation Model,NLP & LLMs,A large model pretrained on broad data that can be adapted to many downstream tasks.
+380,Forward Pass,Deep Learning,Computing a network's output by passing input data through each layer in order.,An image goes through convolutional layers and ends as class logits.
+381,Foundation Model,NLP & LLMs,A large model pretrained on broad data that can be adapted to many downstream tasks.,A model trained on huge video corpora can later support many interactive environment tasks.
 382,Fourier Series,Calculus,A representation of a periodic function as a sum of sines and cosines.
 383,Fourier Transform,Calculus,A transformation that decomposes a function into its frequency components.
 384,FP16,Deep Learning,"16-bit floating-point format, used to reduce memory use in training and inference."
@@ -396,13 +396,13 @@ id,term,category,definition
 395,Game Theory,Optimization,The study of strategic decision-making among rational players.
 396,Gamma Distribution,Probability,"A two-parameter family of continuous distributions for positive values, generalizing the exponential distribution."
 397,Gaussian Elimination,Linear Algebra,An algorithm for solving systems of linear equations by row operations that reduce a matrix to row echelon form.
-398,Gaussian Mixture Model,Machine Learning,A probabilistic model representing data as a combination of several Gaussian distributions.
-399,GELU,Deep Learning,"Gaussian Error Linear Unit, a smooth activation function widely used in transformers."
-400,Generalization,Machine Learning,"A model's ability to perform well on new, previously unseen data."
+398,Gaussian Mixture Model,Machine Learning,A probabilistic model representing data as a combination of several Gaussian distributions.,An MDN can predict five Gaussian components for the next latent state.
+399,GELU,Deep Learning,"Gaussian Error Linear Unit, a smooth activation function widely used in transformers.",BERT applies GELU inside its feed-forward layers.
+400,Generalization,Machine Learning,"A model's ability to perform well on new, previously unseen data.",A classifier generalizes if it still works on new photographs from different cameras.
 401,Generating Function,Discrete Math,"A power series whose coefficients encode a sequence, used to solve counting problems."
-402,Generative Adversarial Network,Deep Learning,"A system of two networks, a generator and a discriminator, trained in competition to produce realistic synthetic data."
-403,Generative Model,Deep Learning,A model that learns the distribution of data and can generate new samples resembling it.
-404,Generator,Deep Learning,"In a GAN, the network that creates synthetic data from random noise."
+402,Generative Adversarial Network,Deep Learning,"A system of two networks, a generator and a discriminator, trained in competition to produce realistic synthetic data.",The generator improves by producing samples the discriminator mistakes for real.
+403,Generative Model,Deep Learning,A model that learns the distribution of data and can generate new samples resembling it.,A GAN generator produces new images resembling its training set.
+404,Generator,Deep Learning,"In a GAN, the network that creates synthetic data from random noise.",G(z) converts a random vector into an image.
 405,Genetic Algorithm,AI General,An optimization method inspired by natural selection that evolves a population of candidate solutions.
 406,Geodesic,Geometry,The shortest path between two points on a curved surface.
 407,Geometric Distribution,Probability,The distribution of the number of trials needed to get the first success.
@@ -412,16 +412,16 @@ id,term,category,definition
 411,Gibbs Sampling,Probability,An MCMC method that samples each variable in turn from its conditional distribution given the others.
 412,Global Maximum,Calculus,The largest value a function attains over its entire domain.
 413,Global Minimum,Calculus,The smallest value a function attains over its entire domain.
-414,Global Optimum,Optimization,The best solution across the entire feasible region.
+414,Global Optimum,Optimization,The best solution across the entire feasible region.,"For a GAN theorem, p_g = p_data is associated with the global optimum of the idealized objective."
 415,GloVe,NLP & LLMs,"Global Vectors, a word embedding method based on word co-occurrence statistics."
 416,Goal Misgeneralization,AI Safety,When a model competently pursues the wrong goal in new situations despite training on the right one.
 417,Godel's Incompleteness Theorems,Set Theory & Logic,Results showing that any consistent formal system capable of arithmetic contains true statements it cannot prove.
 418,GPT,NLP & LLMs,"Generative Pre-trained Transformer, a family of decoder-only autoregressive language models."
 419,GPU,AI Infrastructure,"Graphics Processing Unit, a processor with many parallel cores widely used to train and run neural networks."
-420,Gradient,Calculus,"The vector of all partial derivatives of a function, pointing in the direction of steepest increase."
+420,Gradient,Calculus,"The vector of all partial derivatives of a function, pointing in the direction of steepest increase.","If the loss gradient points right, gradient descent updates parameters in the opposite direction."
 421,Gradient Boosting,Machine Learning,"An ensemble method that builds models sequentially, each one correcting the errors of the previous ones."
 422,Gradient Clipping,Deep Learning,Limiting the size of gradients during training to prevent exploding gradients.
-423,Gradient Descent,Optimization,An optimization method that repeatedly moves parameters in the direction that most reduces the loss.
+423,Gradient Descent,Optimization,An optimization method that repeatedly moves parameters in the direction that most reduces the loss.,theta = theta - learning_rate times gradient.
 424,Gram-Schmidt Process,Linear Algebra,A method for converting a set of linearly independent vectors into an orthonormal set.
 425,Graph,Graph Theory,A structure of vertices (nodes) connected by edges.
 426,Graph Coloring,Graph Theory,Assigning colors to vertices so that no two adjacent vertices share a color.
@@ -450,17 +450,17 @@ id,term,category,definition
 449,Heuristic,AI General,A rule of thumb or estimate that guides search or problem solving toward good solutions quickly.
 450,Hidden Layer,Deep Learning,Any layer between the input and output layers of a neural network.
 451,Hidden Markov Model,Probability,A model in which an unobserved Markov chain generates observable outputs.
-452,Hidden State,Deep Learning,The internal memory vector a recurrent network carries from one time step to the next.
+452,Hidden State,Deep Learning,The internal memory vector a recurrent network or state-space model carries from one time step to the next.,An RNN's h_t summarizes information from previous time steps.
 453,Hierarchical Clustering,Machine Learning,Clustering that builds a tree of nested groups by repeatedly merging or splitting clusters.
 454,Higher-Order Derivative,Calculus,"A derivative taken more than once, such as the third or fourth derivative."
-455,Hinge Loss,Machine Learning,A loss used for maximum-margin classifiers such as SVMs that penalizes predictions on the wrong side of the margin.
+455,Hinge Loss,Machine Learning,A loss used for maximum-margin classifiers such as SVMs that penalizes predictions on the wrong side of the margin.,"A binary hinge loss is max(0, 1 - y f(x))."
 456,Histogram,Statistics,A chart showing the frequency of data values grouped into ranges.
 457,Homeomorphism,Topology,A continuous bijection with a continuous inverse; two spaces related this way are topologically the same.
 458,Homomorphism,Abstract Algebra,A structure-preserving map between two algebraic structures.
 459,Huber Loss,Machine Learning,"A loss that is quadratic for small errors and linear for large ones, making it less sensitive to outliers."
 460,Human-in-the-Loop,AI Agents,"A design where humans review, approve, or correct an AI system's decisions at key points."
 461,Hyperbolic Geometry,Geometry,"A non-Euclidean geometry with constant negative curvature, where parallel lines diverge."
-462,Hyperparameter,Machine Learning,"A configuration setting chosen before training, such as learning rate or tree depth, rather than learned from data."
+462,Hyperparameter,Machine Learning,"A configuration setting chosen before training, such as learning rate or tree depth, rather than learned from data.","Learning rate, batch size, and number of layers are hyperparameters."
 463,Hyperparameter Sweep,Deep Learning,Running many training jobs with different hyperparameter settings to find the best configuration.
 464,Hyperparameter Tuning,Machine Learning,The search for hyperparameter values that give the best validation performance.
 465,Hyperplane,Geometry,"A flat subspace one dimension lower than its surrounding space, such as a plane in 3D."
@@ -479,7 +479,7 @@ id,term,category,definition
 478,Importance Sampling,Probability,"Estimating properties of one distribution using samples drawn from another, reweighting appropriately."
 479,Improper Integral,Calculus,An integral with an infinite bound or an integrand that becomes infinite within the interval.
 480,Imputation,Machine Learning,Filling in missing values in a dataset with estimated values.
-481,In-Context Learning,NLP & LLMs,"A language model's ability to learn a task from examples or instructions in its prompt, without updating its weights."
+481,In-Context Learning,NLP & LLMs,"A language model's ability to learn a task from examples or instructions in its prompt, without updating its weights.",GPT-3 learns the desired formatting from three examples in the prompt.
 482,Inclusion-Exclusion Principle,Discrete Math,A counting technique for the size of a union of sets that corrects for overlaps.
 483,Indefinite Integral,Calculus,"A family of antiderivatives of a function, written with an arbitrary constant."
 484,Independence,Probability,The property of events or variables where the occurrence of one does not affect the probability of the other.
@@ -503,7 +503,7 @@ id,term,category,definition
 502,Integration,Calculus,The process of computing an integral.
 503,Integration by Parts,Calculus,An integration technique based on the product rule: the integral of u dv equals uv minus the integral of v du.
 504,Intercept,Algebra,A point where a graph crosses an axis.
-505,Interpolation,Optimization,Estimating values between known data points.
+505,Interpolation,Optimization,Estimating values between known data points.,ViT interpolates learned position embeddings when fine-tuned at a larger image resolution.
 506,Interpretability,Machine Learning,The degree to which a human can understand why a model makes its predictions.
 507,Interpretability Research,AI Safety,Research aimed at understanding the internal computations of neural networks.
 508,Interquartile Range,Statistics,"The difference between the third and first quartiles, measuring the spread of the middle half of the data."
@@ -523,7 +523,7 @@ id,term,category,definition
 522,K-Fold Cross-Validation,Machine Learning,"Cross-validation that divides data into k equal parts, training on k-1 parts and validating on the remaining one, rotating k times."
 523,K-Means,Machine Learning,A clustering algorithm that partitions data into k groups by repeatedly assigning points to the nearest centroid and recomputing centroids.
 524,K-Nearest Neighbors,Machine Learning,A method that predicts an input's label from the labels of the k most similar training examples.
-525,Kernel,Deep Learning,"In a CNN, the small matrix of learnable weights that is slid across input data; also called a filter."
+525,Kernel,Deep Learning,"In a CNN, the small matrix of learnable weights that is slid across input data; also called a filter.",A 3x3 kernel can learn to respond to horizontal edges.
 526,Kernel Trick,Machine Learning,A method of computing inner products in a high-dimensional feature space without explicitly transforming the data.
 527,KKT Conditions,Optimization,"Karush-Kuhn-Tucker conditions, necessary conditions for optimality in constrained optimization with inequalities."
 528,KL Divergence,Probability,"Kullback-Leibler divergence, a measure of how one probability distribution differs from a reference distribution."
@@ -533,8 +533,8 @@ id,term,category,definition
 532,Kurtosis,Statistics,A measure of how heavy the tails of a distribution are compared to a normal distribution.
 533,KV Cache,NLP & LLMs,Stored key and value tensors from previous tokens that let a transformer avoid recomputing them during generation.
 534,L'Hopital's Rule,Calculus,A method for evaluating limits of indeterminate forms like 0/0 by taking derivatives of numerator and denominator.
-535,L1 Regularization,Machine Learning,"A penalty proportional to the sum of absolute parameter values, which tends to push some weights exactly to zero; also called Lasso."
-536,L2 Regularization,Machine Learning,"A penalty proportional to the sum of squared parameter values, which shrinks weights toward zero; also called Ridge or weight decay."
+535,L1 Regularization,Machine Learning,"A penalty proportional to the sum of absolute parameter values, which tends to push some weights exactly to zero; also called Lasso.",Adding lambda times |w| to the loss can drive some weights exactly toward zero.
+536,L2 Regularization,Machine Learning,"A penalty proportional to the sum of squared parameter values, which shrinks weights toward zero; also called Ridge or weight decay.",Adding lambda times w^2 makes large weights more costly.
 537,Label,Machine Learning,The known correct output or target value associated with a training example.
 538,Label Encoding,Machine Learning,Converting categories into integer codes.
 539,Lagrange Multiplier,Optimization,A variable introduced to find extrema of a function subject to equality constraints.
@@ -544,22 +544,22 @@ id,term,category,definition
 543,Large Language Model,NLP & LLMs,"A very large neural network, usually a transformer, trained on vast text data to understand and generate language; abbreviated LLM."
 544,Lasso Regression,Machine Learning,"Linear regression with an L1 penalty on the coefficients, which can perform feature selection."
 545,Latency,AI Infrastructure,The time between sending a request and receiving a response.
-546,Latent Space,Deep Learning,"The compressed internal representation space learned by a model, where similar inputs lie close together."
-547,Latent Variable,Deep Learning,A hidden variable not directly observed but inferred from data.
+546,Latent Space,Deep Learning,"The compressed internal representation space learned by a model, where similar inputs lie close together.",Two nearby latent vectors may decode into visually similar game frames.
+547,Latent Variable,Deep Learning,A hidden variable not directly observed but inferred from data.,A world model may use z to represent unobserved details of a future state.
 548,Law of Large Numbers,Probability,The principle that the average of many independent trials converges to the expected value.
 549,Law of Total Probability,Probability,A rule expressing an event's probability as a weighted sum over a partition of the sample space.
-550,Layer,Deep Learning,A group of neurons that process inputs together at the same depth in a network.
-551,Layer Normalization,Deep Learning,"Normalizing activations across the features of each individual example, commonly used in transformers."
+550,Layer,Deep Learning,A group of neurons at the same depth in a network that together transform one representation into the next.,A hidden layer can map a 768-dimensional vector to another 768-dimensional vector.
+551,Layer Normalization,Deep Learning,"Normalizing activations across the features of each individual example, commonly used in transformers.",Transformers apply LayerNorm around attention and feed-forward sublayers.
 552,Leaky ReLU,Deep Learning,A variant of ReLU that allows a small nonzero slope for negative inputs.
-553,Learning Rate,Deep Learning,A hyperparameter that controls how large a step the optimizer takes when updating parameters.
-554,Learning Rate Schedule,Deep Learning,"A plan for changing the learning rate during training, such as decaying it over time."
+553,Learning Rate,Deep Learning,A hyperparameter that controls how large a step the optimizer takes when updating parameters.,A learning rate of 1e-4 makes smaller updates than 1e-2.
+554,Learning Rate Schedule,Deep Learning,"A plan for changing the learning rate during training, such as decaying it over time.",Use linear warmup followed by decay.
 555,Least Common Multiple,Number Theory,The smallest positive integer divisible by two or more integers; abbreviated LCM.
-556,Least Squares,Linear Algebra,A method that finds the parameters minimizing the sum of squared differences between observed and predicted values.
+556,Least Squares,Linear Algebra,A method that finds the parameters minimizing the sum of squared differences between observed and predicted values.,Fit a line by minimizing the squared vertical distance from data points to the line.
 557,Leave-One-Out Cross-Validation,Machine Learning,Cross-validation in which each single example is used once as the validation set.
 558,Lemma,Set Theory & Logic,A proven statement used as a stepping stone to prove a larger theorem.
 559,Lemmatization,NLP & LLMs,Reducing words to their dictionary base form using vocabulary and grammar.
 560,LightGBM,Machine Learning,A fast gradient-boosting framework that grows trees leaf-wise and uses histogram-based splitting.
-561,Likelihood,Probability,The probability of observed data under a particular hypothesis or parameter value.
+561,Likelihood,Probability,The probability of observed data under a particular hypothesis or parameter value.,A language model has higher likelihood if it assigns high probability to the observed token sequence.
 562,LIME,Machine Learning,"Local Interpretable Model-agnostic Explanations, which explains a prediction by fitting a simple model around it."
 563,Limit,Calculus,The value a function approaches as its input approaches some point.
 564,Line,Geometry,A straight one-dimensional figure extending infinitely in both directions.
@@ -570,17 +570,17 @@ id,term,category,definition
 569,Linear Independence,Linear Algebra,A property of a set of vectors where none can be written as a linear combination of the others.
 570,Linear Programming,Optimization,Optimizing a linear objective subject to linear equality and inequality constraints.
 571,Linear Regression,Machine Learning,A model that predicts a target as a weighted sum of input features plus a constant.
-572,Linear Transformation,Linear Algebra,A function between vector spaces that preserves addition and scalar multiplication.
+572,Linear Transformation,Linear Algebra,A function between vector spaces that preserves addition and scalar multiplication.,Multiplying x by W is a linear transformation.
 573,LLM-as-a-Judge,NLP & LLMs,Using a language model to grade or compare the outputs of other models.
 574,Local Maximum,Calculus,A point where a function's value is greater than at all nearby points.
 575,Local Minimum,Calculus,A point where a function's value is less than at all nearby points.
-576,Local Optimum,Optimization,A solution better than all nearby solutions but not necessarily the best overall.
+576,Local Optimum,Optimization,A solution better than all nearby solutions but not necessarily the best overall.,Gradient descent may settle in a local minimum of a non-convex loss surface.
 577,Log-Normal Distribution,Probability,The distribution of a variable whose logarithm is normally distributed.
-578,Logarithm,Algebra,The power to which a base must be raised to produce a given number; the inverse of exponentiation.
+578,Logarithm,Algebra,The power to which a base must be raised to produce a given number; the inverse of exponentiation.,"log(0.01) is a large negative number, so assigning tiny probability to the truth is heavily penalized."
 579,Logistic Regression,Machine Learning,A classification model that applies the logistic (sigmoid) function to a linear combination of features to output a probability.
 580,Logits,Deep Learning,"The raw, unnormalized scores output by a model before applying softmax or sigmoid."
 581,LoRA,NLP & LLMs,"Low-Rank Adaptation, a parameter-efficient fine-tuning method that trains small low-rank matrices added to frozen weights."
-582,Loss Function,Machine Learning,A function that measures how far a model's predictions are from the correct values; training minimizes it.
+582,Loss Function,Machine Learning,A function that measures how far a model's predictions are from the correct values; training minimizes it.,Cross-entropy loss is high when the model gives low probability to the correct class.
 583,LSTM,Deep Learning,"Long Short-Term Memory, a recurrent network with gates that control what information to keep or forget over long sequences."
 584,LU Decomposition,Linear Algebra,Factoring a matrix into a lower triangular matrix and an upper triangular matrix.
 585,Machine Learning,Machine Learning,A branch of AI in which systems learn patterns from data to make predictions or decisions without being explicitly programmed for each case.
@@ -590,26 +590,26 @@ id,term,category,definition
 589,Manifold,Geometry,"A space that locally resembles Euclidean space near every point, even if globally curved."
 590,Margin,Machine Learning,The distance between a decision boundary and the nearest training points of each class.
 591,Marginal Probability,Probability,"The probability of an event irrespective of the outcomes of other variables, found by summing or integrating them out."
-592,Markov Chain,Probability,"A stochastic process where the next state depends only on the current state, not on the history."
-593,Markov Chain Monte Carlo,Probability,A class of algorithms that sample from complex distributions by constructing a Markov chain whose stationary distribution is the target; abbreviated MCMC.
+592,Markov Chain,Probability,"A stochastic process where the next state depends only on the current state, not on the history.",MCMC constructs a Markov chain whose long-run samples follow a target distribution.
+593,Markov Chain Monte Carlo,Probability,A class of algorithms that sample from complex distributions by constructing a Markov chain whose stationary distribution is the target; abbreviated MCMC.,Use MCMC when direct sampling from a posterior is impractical.
 594,Markov Decision Process,Reinforcement Learning,"A mathematical framework for sequential decision-making with states, actions, transition probabilities, and rewards; abbreviated MDP."
 595,Markov Property,Probability,The property that the future is independent of the past given the present state.
-596,Masked Language Modeling,NLP & LLMs,A training objective in which some tokens are hidden and the model learns to predict them from context.
-597,Matrix,Linear Algebra,A rectangular array of numbers arranged in rows and columns.
+596,Masked Language Modeling,NLP & LLMs,A training objective in which some tokens are hidden and the model learns to predict them from context.,Hide 'Paris' in 'The capital of France is Paris' and predict it.
+597,Matrix,Linear Algebra,A rectangular array of numbers arranged in rows and columns.,A weight matrix maps a 768-dimensional vector to 3072 dimensions.
 598,Matrix Factorization,Machine Learning,"Decomposing a large matrix, such as user-item ratings, into smaller matrices that reveal latent factors."
-599,Matrix Multiplication,Linear Algebra,An operation combining two matrices where each entry is the dot product of a row of the first and a column of the second.
+599,Matrix Multiplication,Linear Algebra,An operation combining two matrices where each entry is the dot product of a row of the first and a column of the second.,A token matrix X multiplied by W_Q produces query vectors Q.
 600,Matrix Norm,Linear Algebra,"A measure of the size of a matrix, such as the Frobenius norm or spectral norm."
-601,Max Pooling,Deep Learning,Pooling that keeps only the largest value from each region.
+601,Max Pooling,Deep Learning,Pooling that keeps only the largest value from each region.,A 2x2 max pool outputs the largest value from each 2x2 region.
 602,Maximum A Posteriori,Statistics,Estimating parameters by choosing the values with the highest posterior probability; abbreviated MAP.
-603,Maximum Likelihood Estimation,Statistics,Estimating parameters by choosing the values that make the observed data most probable; abbreviated MLE.
-604,Mean,Statistics,The sum of values divided by their count; the arithmetic average.
+603,Maximum Likelihood Estimation,Statistics,Estimating parameters by choosing the values that make the observed data most probable; abbreviated MLE.,Training an autoregressive language model with cross-entropy corresponds to maximizing token likelihood.
+604,Mean,Statistics,"The sum of values divided by their count (the arithmetic average); for a random variable, its expected value.","For [1,2,3], the mean is 2."
 605,Mean Absolute Error,Machine Learning,The average of the absolute differences between predicted and actual values.
 606,Mean Squared Error,Machine Learning,The average of the squared differences between predicted and actual values.
 607,Mean Value Theorem,Calculus,A theorem stating that a smooth function's average rate of change over an interval equals its instantaneous rate at some point within it.
 608,Mechanistic Interpretability,AI Safety,Reverse-engineering neural networks into human-understandable algorithms and circuits.
 609,Median,Statistics,The middle value of a dataset when ordered.
 610,Message Passing,Deep Learning,"In graph neural networks, the process of nodes exchanging and aggregating information from their neighbors."
-611,Meta-Learning,Machine Learning,Learning to learn: training models that can adapt quickly to new tasks from few examples.
+611,Meta-Learning,Machine Learning,Learning to learn: training models that can adapt quickly to new tasks from few examples.,GPT-3's in-context behavior can be interpreted as a form of meta-learning performed during inference.
 612,Metric Space,Topology,"A set with a distance function satisfying positivity, symmetry, and the triangle inequality."
 613,Metropolis-Hastings,Probability,An MCMC algorithm that proposes moves and accepts or rejects them based on a probability ratio.
 614,Mini-Batch Gradient Descent,Optimization,Gradient descent that computes each update from a small random batch of training examples.
@@ -634,15 +634,15 @@ id,term,category,definition
 633,Model-Free RL,Reinforcement Learning,Reinforcement learning that learns policies or values directly from experience without modeling the environment.
 634,Modular Arithmetic,Number Theory,Arithmetic in which numbers wrap around after reaching a fixed value called the modulus.
 635,Moment,Probability,"An expected value of a power of a random variable, such as the mean (first) or variance (second central)."
-636,Momentum,Optimization,An optimizer technique that accumulates past gradients to smooth and accelerate updates.
+636,Momentum,Optimization,An optimizer technique that accumulates past gradients to smooth and accelerate updates.,SGD with momentum keeps moving through small noisy gradient reversals.
 637,Monomial,Algebra,A polynomial with a single term.
 638,Monotonic Function,Algebra,A function that is entirely nonincreasing or entirely nondecreasing.
-639,Monte Carlo Method,Probability,Using repeated random sampling to estimate numerical results.
+639,Monte Carlo Method,Probability,Using repeated random sampling to estimate numerical results.,Estimate an expectation by averaging f(z) over many sampled z values.
 640,Monte Carlo Tree Search,Reinforcement Learning,"A search algorithm that uses random simulations to evaluate moves, famously used in AlphaGo."
 641,Moving Average,Statistics,"An average computed over a sliding window of consecutive data points, used to smooth fluctuations."
 642,Multi-Agent System,AI Agents,A system of multiple interacting AI agents that cooperate or compete to achieve goals.
 643,Multi-Armed Bandit,Reinforcement Learning,A simplified decision problem of repeatedly choosing among options with unknown reward distributions.
-644,Multi-Head Attention,Deep Learning,"Running several attention operations in parallel, each learning to focus on different relationships."
+644,Multi-Head Attention,Deep Learning,"Running several attention operations in parallel, each learning to focus on different relationships.",Eight heads can learn different relational patterns at the same layer.
 645,Multiclass Classification,Machine Learning,Classification where each input belongs to exactly one of three or more classes.
 646,Multicollinearity,Statistics,"High correlation among independent variables in a regression, making coefficient estimates unstable."
 647,Multilabel Classification,Machine Learning,Classification where each input can belong to several classes at once.
@@ -653,7 +653,7 @@ id,term,category,definition
 652,Multiple Integral,Calculus,"An integral of a function of several variables over a region, such as a double or triple integral."
 653,Mutual Information,Probability,A measure of how much knowing one variable reduces uncertainty about another.
 654,Mutually Exclusive Events,Probability,Events that cannot occur at the same time.
-655,N-gram,NLP & LLMs,"A contiguous sequence of n items, such as words or characters, from a text."
+655,N-gram,NLP & LLMs,"A contiguous sequence of n items, such as words or characters, from a text; the basis of classic language models and metrics like BLEU.",The phrase 'machine learning model' contains the bigrams 'machine learning' and 'learning model'.
 656,Naive Bayes,Machine Learning,A probabilistic classifier based on Bayes' theorem that assumes features are independent given the class.
 657,Named Entity Recognition,NLP & LLMs,"Identifying and classifying named items in text, such as people, organizations, and locations."
 658,Narrow AI,AI General,AI designed to perform a specific task or limited set of tasks.
@@ -666,19 +666,19 @@ id,term,category,definition
 665,Negation,Set Theory & Logic,"The logical NOT of a proposition, reversing its truth value."
 666,Network Centrality,Graph Theory,Measures of how important or influential a node is within a network.
 667,Neural Architecture Search,Deep Learning,Automated methods for discovering effective neural network architectures.
-668,Neural Network,Deep Learning,A model made of layers of interconnected units (neurons) that transform inputs through weighted sums and nonlinear functions.
+668,Neural Network,Deep Learning,"A model made of layers of interconnected units (neurons) that transform inputs through weighted sums and nonlinear functions, with weights learned from data.",An image classifier maps pixels through many layers to probabilities over labels.
 669,Neuro-Symbolic AI,AI General,Approaches that combine neural networks with symbolic reasoning.
 670,Newton's Method,Optimization,An iterative method that uses first and second derivatives to find roots or optima quickly.
 671,Next-Token Prediction,NLP & LLMs,The training objective of predicting the next token in a sequence given all previous tokens.
 672,Noise,Machine Learning,Random or irrelevant variation in data that does not reflect the underlying pattern.
 673,Noise Schedule,Deep Learning,"In diffusion models, the plan for how much noise is added at each step of the forward process."
-674,Non-Convex Optimization,Optimization,"Optimization problems with multiple local minima, such as training neural networks."
+674,Non-Convex Optimization,Optimization,"Optimization problems with multiple local minima or saddle points, such as training neural networks.",Training a deep neural network is a non-convex optimization problem.
 675,Non-Euclidean Geometry,Geometry,"Geometry in which Euclid's parallel postulate does not hold, such as spherical or hyperbolic geometry."
 676,Non-Maximum Suppression,Computer Vision,"A step that removes duplicate overlapping detections, keeping the most confident one."
 677,Nonparametric Test,Statistics,A statistical test that makes few or no assumptions about the data's distribution.
-678,Norm,Linear Algebra,A function measuring the length or size of a vector.
+678,Norm,Linear Algebra,A function measuring the length or size of a vector.,"The L2 norm of [3,4] is 5."
 679,Normal Distribution,Probability,"A symmetric, bell-shaped continuous distribution fully described by its mean and standard deviation; also called Gaussian."
-680,Normalization,Machine Learning,"Rescaling values to a standard range, commonly 0 to 1, or adjusting data to have consistent statistical properties."
+680,Normalization,Machine Learning,"Rescaling values to a standard range, commonly 0 to 1, or to consistent statistical properties; in neural networks it keeps activations well scaled and training stable.",LayerNorm normalizes a token's feature vector before or after a Transformer sublayer.
 681,Normalizing Flow,Deep Learning,A generative model that transforms a simple distribution into a complex one through a series of invertible functions.
 682,NP-Complete,Discrete Math,"The hardest problems in NP; if any one can be solved quickly, all NP problems can."
 683,NP-Hard,Discrete Math,Problems at least as hard as the hardest problems in NP.
@@ -688,7 +688,7 @@ id,term,category,definition
 687,Object Detection,Computer Vision,"Locating and classifying multiple objects within an image, usually with bounding boxes."
 688,Objective Function,Machine Learning,The function an optimization process aims to minimize or maximize.
 689,One-Hot Encoding,Machine Learning,Representing a categorical variable as a vector with a single 1 indicating the category and 0s elsewhere.
-690,One-Shot Learning,NLP & LLMs,Learning or performing a task from a single example.
+690,One-Shot Learning,NLP & LLMs,Learning or performing a task from a single example.,Give one example of sentiment labeling before asking for a new label.
 691,One-Sided Limit,Calculus,A limit taken as the input approaches a point from only the left or only the right.
 692,Online Learning,Machine Learning,"Training that updates a model incrementally as new data arrives, rather than all at once."
 693,Ontology,AI General,A formal specification of the concepts and relationships within a domain.
@@ -707,18 +707,18 @@ id,term,category,definition
 706,Outer Product,Linear Algebra,The matrix formed by multiplying a column vector by a row vector.
 707,Outlier,Machine Learning,A data point that differs markedly from other observations.
 708,Output Layer,Deep Learning,"The final layer of a network, which produces the prediction."
-709,Overfitting,Machine Learning,"When a model learns the training data too closely, including its noise, and performs poorly on new data."
+709,Overfitting,Machine Learning,"When a model learns the training data too closely, including its noise, and performs poorly on new data.",Training accuracy reaches 99 percent while validation accuracy stalls at 80 percent.
 710,Oversampling,Machine Learning,"Increasing the number of minority-class examples, by duplication or synthesis, to address class imbalance."
 711,P vs NP,Discrete Math,The open question of whether every problem whose solution can be quickly verified can also be quickly solved.
 712,P-Hacking,Statistics,Manipulating analyses or data until results become statistically significant.
 713,P-Value,Statistics,"The probability of observing results at least as extreme as the data, assuming the null hypothesis is true."
-714,Padding,Deep Learning,"Adding extra values, usually zeros, around input borders so convolutions can cover edges or keep output size."
+714,Padding,Deep Learning,"Adding extra values, usually zeros, around input borders so convolutions can cover edges or keep output size.",Zero-padding by one lets a 3x3 convolution preserve width and height.
 715,PageRank,Graph Theory,An algorithm ranking nodes in a graph by importance based on the structure of incoming links.
 716,Parabola,Geometry,"A U-shaped curve, the graph of a quadratic function."
-717,Parameter,Machine Learning,"A value inside a model, such as a weight or bias, that is learned from data during training."
+717,Parameter,Machine Learning,"A value inside a model, such as a weight or bias, that is learned from data during training.",A 7 billion parameter model contains about 7 billion learned numeric values.
 718,Parameter-Efficient Fine-Tuning,NLP & LLMs,Methods that adapt a large model by training only a small number of added or selected parameters; abbreviated PEFT.
 719,Part-of-Speech Tagging,NLP & LLMs,"Labeling each word in a sentence with its grammatical category, such as noun or verb."
-720,Partial Derivative,Calculus,The derivative of a multivariable function with respect to one variable while holding the others constant.
+720,Partial Derivative,Calculus,The derivative of a multivariable function with respect to one variable while holding the others constant.,"For f(x,y)=x^2+y, the partial derivative with respect to x is 2x."
 721,Partial Differential Equation,Calculus,A differential equation involving partial derivatives with respect to several variables; abbreviated PDE.
 722,Partial Fractions,Calculus,Decomposing a rational function into a sum of simpler fractions to integrate it.
 723,Partial Order,Set Theory & Logic,"A relation that is reflexive, antisymmetric, and transitive, allowing some elements to be incomparable."
@@ -729,7 +729,7 @@ id,term,category,definition
 728,Perfect Number,Number Theory,"A positive integer equal to the sum of its proper divisors, such as 6 or 28."
 729,Periodic Function,Algebra,A function that repeats its values at regular intervals.
 730,Permutation,Discrete Math,An arrangement of objects in a specific order.
-731,Perplexity,NLP & LLMs,A measure of how well a language model predicts text; lower perplexity means better prediction.
+731,Perplexity,NLP & LLMs,A measure of how well a language model predicts text; lower perplexity means better prediction.,A perplexity of 20 roughly means the model behaves as if choosing among 20 equally likely next-token options.
 732,Physical AI,AI General,"AI that interacts with the physical world through robots, sensors, and actuators."
 733,Pi,Geometry,"The ratio of a circle's circumference to its diameter, approximately 3.14159."
 734,Piecewise Function,Algebra,A function defined by different formulas on different parts of its domain.
@@ -743,18 +743,18 @@ id,term,category,definition
 742,Poisson Distribution,Probability,The distribution of the number of events occurring in a fixed interval when events happen independently at a constant average rate.
 743,Poisson Process,Probability,A process counting events that occur randomly and independently at a constant average rate.
 744,Polar Coordinates,Geometry,A coordinate system specifying points by a distance from the origin and an angle.
-745,Policy,Reinforcement Learning,"The strategy an agent uses to choose actions, mapping states to actions or action probabilities."
+745,Policy,Reinforcement Learning,"The strategy an agent uses to choose actions, mapping states to actions or action probabilities.",pi(a|s) gives the probability of choosing action a in state s.
 746,Policy Gradient,Reinforcement Learning,Methods that optimize a policy directly by following the gradient of expected reward.
 747,Polygon,Geometry,A closed plane figure made of straight line segments.
 748,Polynomial,Algebra,"An expression consisting of variables raised to whole-number powers, multiplied by coefficients and added together."
 749,Polynomial Regression,Machine Learning,Regression that models the target as a polynomial function of the input features.
-750,Pooling,Deep Learning,"Downsampling feature maps by summarizing regions, such as taking their maximum or average."
+750,Pooling,Deep Learning,"Downsampling feature maps by summarizing regions, such as taking their maximum or average.",Pooling can reduce a 28x28 feature map to 14x14.
 751,Population,Statistics,The entire group about which conclusions are to be drawn.
 752,Pose Estimation,Computer Vision,"Detecting the positions of a person's or object's key points, such as joints."
-753,Positional Encoding,Deep Learning,Information added to token embeddings to tell a transformer the order of tokens.
+753,Positional Encoding,Deep Learning,Information added to token embeddings to tell a transformer the order of tokens.,A Transformer adds a position-dependent vector before the first encoder layer.
 754,Positive Definite Matrix,Linear Algebra,A symmetric matrix for which x transpose A x is positive for every nonzero vector x.
 755,Posterior,Probability,The updated probability of a hypothesis after taking new evidence into account.
-756,Power Law,Probability,"A relationship in which one quantity varies as a power of another, producing heavy-tailed distributions."
+756,Power Law,Probability,"A relationship in which one quantity varies as a power of another, producing heavy-tailed distributions.",Language-model loss can approximately follow L(N)=aN^b+c as parameter count N grows.
 757,Power Rule,Calculus,The rule that the derivative of x to the n is n times x to the n minus 1.
 758,Power Series,Calculus,An infinite series of the form sum of a_n times (x minus c) to the n.
 759,Power Set,Set Theory & Logic,The set of all subsets of a given set.
@@ -765,11 +765,11 @@ id,term,category,definition
 764,Pretraining,Deep Learning,"Training a model on a large, general dataset before adapting it to specific tasks."
 765,Prime Factorization,Number Theory,Expressing a number as a product of prime numbers.
 766,Prime Number,Number Theory,A natural number greater than 1 whose only positive divisors are 1 and itself.
-767,Principal Component Analysis,Machine Learning,A technique that projects data onto the directions of greatest variance to reduce dimensionality.
+767,Principal Component Analysis,Machine Learning,A linear technique that projects data onto orthogonal directions of greatest variance to reduce dimensionality.,AlexNet uses PCA-based color perturbations for data augmentation.
 768,Prior,Probability,The probability assigned to a hypothesis before seeing new evidence.
 769,Probability,Probability,A number between 0 and 1 measuring how likely an event is to occur.
 770,Probability Density Function,Probability,A function whose integral over an interval gives the probability that a continuous random variable falls in that interval; abbreviated PDF.
-771,Probability Distribution,Probability,A description of how probabilities are assigned to the possible values of a random variable.
+771,Probability Distribution,Probability,A description of how probabilities are assigned to the possible values of a random variable.,A language model outputs a distribution over the next token.
 772,Probability Mass Function,Probability,A function giving the probability that a discrete random variable equals each possible value; abbreviated PMF.
 773,Product Rule,Calculus,The rule for differentiating a product: (fg)' equals f'g plus fg'.
 774,Projection,Linear Algebra,"The component of one vector in the direction of another, or the mapping of a vector onto a subspace."
@@ -810,7 +810,7 @@ id,term,category,definition
 809,Random Sample,Statistics,"A sample in which every member of the population has a known, usually equal, chance of selection."
 810,Random Search,Machine Learning,Hyperparameter tuning that samples random combinations of values from specified ranges.
 811,Random Seed,Data & MLOps,A starting value for a random number generator that makes random processes repeatable.
-812,Random Variable,Probability,A variable whose value is determined by the outcome of a random process.
+812,Random Variable,Probability,A variable whose value is determined by the outcome of a random process.,The sampled latent z is a random variable.
 813,Random Walk,Probability,A process consisting of a sequence of random steps.
 814,Randomized Controlled Trial,Statistics,An experiment that randomly assigns subjects to treatment and control groups to establish causal effects.
 815,Range,Calculus,The set of all output values a function actually produces.
@@ -823,20 +823,20 @@ id,term,category,definition
 822,Real Number,Number Theory,"Any number on the continuous number line, including rational and irrational numbers."
 823,Reasoning Model,NLP & LLMs,A language model trained to spend extra computation thinking through problems step by step before answering.
 824,Recall,Machine Learning,"Of all actual positive items, the fraction the model correctly identifies; also called sensitivity."
-825,Receptive Field,Deep Learning,The region of the input that influences a particular neuron's output.
+825,Receptive Field,Deep Learning,The region of the input that influences a particular neuron's output.,Deeper CNN units usually have receptive fields covering larger parts of the image.
 826,Recommender System,Machine Learning,"A system that predicts which items a user is likely to want, such as products, videos, or songs."
 827,Recurrence Relation,Discrete Math,An equation defining each term of a sequence in terms of previous terms.
-828,Recurrent Neural Network,Deep Learning,A network with loops that processes sequences step by step while keeping a hidden state of previous steps.
+828,Recurrent Neural Network,Deep Learning,A network with loops that processes sequences step by step while keeping a hidden state of previous steps.,World Models uses an RNN to model how latent environment states evolve.
 829,Recursion,Discrete Math,Defining a function or solving a problem in terms of smaller instances of itself.
 830,Red Teaming,AI Safety,"Deliberately probing a system with adversarial inputs to find failures, vulnerabilities, or harmful behaviors."
 831,Reduced Row Echelon Form,Linear Algebra,Row echelon form in which each leading entry is 1 and is the only nonzero entry in its column.
-832,Regression,Machine Learning,A task where the model predicts a continuous numerical value.
+832,Regression,Machine Learning,A task where the model predicts a continuous numerical value.,Predict tomorrow's temperature from today's sensor values.
 833,Regression Analysis,Statistics,Statistical methods for modeling the relationship between a dependent variable and one or more independent variables.
-834,Regularization,Machine Learning,"Techniques that discourage overly complex models, usually by adding a penalty term to the loss, to reduce overfitting."
-835,Reinforcement Learning,Reinforcement Learning,A learning paradigm in which an agent learns to act in an environment by receiving rewards or penalties for its actions.
+834,Regularization,Machine Learning,"Techniques that discourage overly complex models, usually by adding a penalty term to the loss, to reduce overfitting.",Dropout and weight decay are regularization methods.
+835,Reinforcement Learning,Reinforcement Learning,A learning paradigm in which an agent learns to act in an environment by receiving rewards or penalties for its actions.,An agent learns to steer a car by receiving reward for staying on track.
 836,Relation,Set Theory & Logic,A set of ordered pairs describing how elements of sets are associated.
-837,ReLU,Deep Learning,"Rectified Linear Unit, an activation function that outputs the input if positive and zero otherwise."
-838,Representation Learning,Deep Learning,Automatically learning useful features or representations from raw data.
+837,ReLU,Deep Learning,"Rectified Linear Unit, an activation function that outputs the input if positive and zero otherwise.",ReLU(-3) is 0 and ReLU(4) is 4.
+838,Representation Learning,Deep Learning,Automatically learning useful features or representations from raw data.,A CNN learns edge and texture features while training on image labels.
 839,Reproducibility,Data & MLOps,The ability to obtain the same results by rerunning an experiment with the same code and data.
 840,Reranking,NLP & LLMs,Reordering retrieved results with a more precise model to improve relevance.
 841,Residual,Statistics,The difference between an observed value and the value predicted by a model.
@@ -845,7 +845,7 @@ id,term,category,definition
 844,Responsible Scaling Policy,AI Safety,"A framework, pioneered by Anthropic, that ties safety measures to the capability levels of AI models."
 845,Retrieval-Augmented Generation,NLP & LLMs,A technique that retrieves relevant documents and supplies them to a language model so it can answer using that information; abbreviated RAG.
 846,Return,Reinforcement Learning,"The total, usually discounted, sum of rewards collected from a point onward."
-847,Reward,Reinforcement Learning,A numerical signal the environment gives an agent indicating how good an action or outcome was.
+847,Reward,Reinforcement Learning,A numerical signal the environment gives an agent indicating how good an action or outcome was.,The agent receives +1 for collecting an item.
 848,Reward Hacking,AI Safety,When an AI system exploits flaws in its reward signal to score highly without achieving the intended goal.
 849,Reward Model,NLP & LLMs,"A model trained to predict how highly humans would rate an output, used to guide reinforcement learning."
 850,Ridge Regression,Machine Learning,Linear regression with an L2 penalty on the coefficients.
@@ -867,25 +867,25 @@ id,term,category,definition
 866,Row Space,Linear Algebra,The span of a matrix's rows.
 867,Row Vector,Linear Algebra,A matrix with a single row.
 868,RSA,Number Theory,A public-key cryptosystem whose security relies on the difficulty of factoring large integers.
-869,Saddle Point,Optimization,A point where the gradient is zero but which is a minimum in some directions and a maximum in others.
+869,Saddle Point,Optimization,A point where the gradient is zero but which is a minimum in some directions and a maximum in others.,The GAN minimax game seeks an equilibrium that can be viewed as a saddle point of its value function.
 870,Sample,Machine Learning,"A single data point, or a subset of data drawn from a larger population."
 871,Sample Mean,Statistics,The average of the observations in a sample.
 872,Sample Space,Probability,The set of all possible outcomes of a random experiment.
-873,Sampling,Statistics,Selecting a subset of a population to estimate characteristics of the whole.
+873,Sampling,Statistics,"Selecting a subset of a population to estimate characteristics of the whole; in generative models, drawing outputs at random from the model's probability distribution.","Instead of always choosing the most likely next token, sample from the softmax distribution."
 874,Sampling Bias,Statistics,Systematic error arising when a sample is not representative of the population.
 875,Sampling Distribution,Statistics,The probability distribution of a statistic computed from repeated random samples.
 876,Scalable Oversight,AI Safety,Methods for supervising AI systems on tasks too difficult for humans to evaluate directly.
-877,Scalar,Linear Algebra,"A single number, as opposed to a vector or matrix."
-878,Scaled Dot-Product Attention,Deep Learning,"Attention computed by taking dot products of queries and keys, dividing by the square root of the key dimension, applying softmax, and weighting values."
-879,Scaling Laws,NLP & LLMs,"Empirical relationships showing how model performance improves predictably with more parameters, data, and compute."
+877,Scalar,Linear Algebra,"A single number, as opposed to a vector or matrix.",A training loss such as 2.4 is a scalar.
+878,Scaled Dot-Product Attention,Deep Learning,"Attention computed by taking dot products of queries and keys, dividing by the square root of the key dimension, applying softmax, and weighting values.","Attention(Q,K,V)=softmax(QK^T/sqrt(d_k))V."
+879,Scaling Laws,NLP & LLMs,"Empirical relationships showing how model performance improves predictably with more parameters, data, and compute.",Validation loss often follows a power-law trend as parameter count increases.
 880,Scatter Plot,Statistics,A chart plotting pairs of values as points to show the relationship between two variables.
 881,Score Matching,Deep Learning,A technique for training models to estimate the gradient of the log probability density of data.
 882,Search Algorithm,AI General,A method for exploring possible states or solutions to find one that meets a goal.
 883,Seasonality,Machine Learning,"Regular, repeating patterns in a time series, such as weekly or yearly cycles."
 884,Secant Line,Calculus,A line passing through two points on a curve.
 885,Second Derivative,Calculus,"The derivative of a derivative, describing the rate of change of the rate of change, such as acceleration or curvature."
-886,Self-Attention,Deep Learning,Attention in which each position in a sequence attends to all other positions in the same sequence.
-887,Self-Supervised Learning,Machine Learning,"Training where the labels are generated automatically from the data itself, such as predicting a hidden word from its surrounding text."
+886,Self-Attention,Deep Learning,Attention in which each position in a sequence attends to all other positions in the same sequence.,Each token in a sentence can attend to every other allowed token.
+887,Self-Supervised Learning,Machine Learning,"Training where the labels are generated automatically from the data itself, such as predicting a hidden word from its surrounding text.",Masked-language modeling hides tokens and trains the model to recover them.
 888,Semantic Search,NLP & LLMs,"Search based on meaning rather than exact keyword matches, typically using embeddings."
 889,Semantic Segmentation,Computer Vision,"Labeling each pixel with a class, without distinguishing separate objects of the same class."
 890,Semi-Supervised Learning,Machine Learning,Training that combines a small amount of labeled data with a large amount of unlabeled data.
@@ -901,8 +901,8 @@ id,term,category,definition
 900,SHAP,Machine Learning,"SHapley Additive exPlanations, a method that attributes a prediction to each feature using Shapley values from game theory."
 901,Shapley Value,Optimization,A method from game theory for fairly distributing a total payoff among players based on their marginal contributions.
 902,Shortest Path,Graph Theory,The path between two vertices with the smallest total weight or number of edges.
-903,Siamese Network,Deep Learning,"A network architecture with twin subnetworks sharing weights, used to compare two inputs."
-904,Sigmoid,Deep Learning,An S-shaped activation function that maps any real number to a value between 0 and 1.
+903,Siamese Network,Deep Learning,"A network architecture with twin subnetworks sharing weights, used to compare two inputs.",Two augmented images pass through the same encoder before their representations are compared.
+904,Sigmoid,Deep Learning,An S-shaped activation function that maps any real number to a value between 0 and 1.,sigmoid(0) equals 0.5.
 905,Signal,Machine Learning,The meaningful pattern in data that a model aims to capture.
 906,Significance Level,Statistics,"The threshold probability, often 0.05, below which a p-value leads to rejecting the null hypothesis; also called alpha."
 907,Sim-to-Real Transfer,Reinforcement Learning,Transferring policies trained in simulation to real-world robots.
@@ -918,7 +918,7 @@ id,term,category,definition
 917,SLAM,Computer Vision,"Simultaneous Localization and Mapping, building a map of an environment while tracking position within it."
 918,Slope,Algebra,The ratio of vertical change to horizontal change between two points on a line.
 919,SMOTE,Machine Learning,"Synthetic Minority Over-sampling Technique, which creates new minority examples by interpolating between existing ones."
-920,Softmax,Deep Learning,A function that converts a vector of scores into probabilities that sum to one.
+920,Softmax,Deep Learning,A function that converts a vector of scores into probabilities that sum to one.,"softmax([2,1]) assigns more probability to the first class but keeps both nonzero."
 921,Space Complexity,Discrete Math,A measure of how much memory an algorithm uses as input size grows.
 922,Span,Linear Algebra,The set of all linear combinations of a given set of vectors.
 923,Spanning Tree,Graph Theory,A tree that includes every vertex of a graph.
@@ -931,35 +931,35 @@ id,term,category,definition
 930,Speech Recognition,NLP & LLMs,Converting spoken audio into text; also called automatic speech recognition (ASR).
 931,Square Matrix,Linear Algebra,A matrix with the same number of rows and columns.
 932,Stacking,Machine Learning,An ensemble technique where a meta-model learns how best to combine the predictions of several base models.
-933,Standard Deviation,Probability,"The square root of the variance, measuring spread in the same units as the data."
+933,Standard Deviation,Probability,"The square root of the variance, measuring spread in the same units as the data.","A Gaussian N(0,1) has standard deviation 1."
 934,Standard Error,Statistics,"The standard deviation of a statistic's sampling distribution, measuring the precision of an estimate."
 935,Standard Normal Distribution,Probability,A normal distribution with mean zero and standard deviation one.
 936,Standardization,Machine Learning,Transforming data to have a mean of zero and a standard deviation of one.
-937,State,Reinforcement Learning,A description of the current situation of the environment as observed by the agent.
+937,State,Reinforcement Learning,A description of the current situation of the environment as observed by the agent.,Position and velocity can form a physical state.
 938,Stationarity,Machine Learning,"The property of a time series whose statistical properties, such as mean and variance, do not change over time."
 939,Stationary Distribution,Probability,A probability distribution over states that remains unchanged as a Markov chain evolves.
 940,Statistical Power,Statistics,The probability that a test correctly rejects a false null hypothesis.
 941,Statistical Significance,Statistics,"The conclusion that a result is unlikely to have occurred by chance under the null hypothesis, typically when the p-value is below a threshold."
 942,Statistics,Statistics,"The science of collecting, analyzing, interpreting, and presenting data."
 943,Stemming,NLP & LLMs,"Reducing words to a crude root form by chopping off endings, such as turning running into run."
-944,Stochastic Gradient Descent,Optimization,Gradient descent that updates parameters using gradients from single examples or small batches rather than the whole dataset.
+944,Stochastic Gradient Descent,Optimization,Gradient descent that updates parameters using gradients from single examples or small batches rather than the whole dataset.,AlexNet updates its weights from minibatches instead of all training images at once.
 945,Stochastic Process,Probability,"A collection of random variables indexed by time or space, describing a system that evolves randomly."
 946,Stokes' Theorem,Calculus,A theorem relating the surface integral of a field's curl to the line integral around the surface's boundary.
 947,Stop Words,NLP & LLMs,"Very common words, such as the or and, often removed in traditional text processing."
 948,Stratified Sampling,Statistics,Sampling separately from distinct subgroups of a population to ensure each is represented.
-949,Stride,Deep Learning,The step size by which a convolution filter moves across the input.
+949,Stride,Deep Learning,The step size by which a convolution filter moves across the input.,Stride 2 roughly halves spatial resolution.
 950,Structured Output,NLP & LLMs,"Model output constrained to a defined format, such as valid JSON matching a schema."
 951,Student's t-Distribution,Probability,"A bell-shaped distribution with heavier tails than the normal, used when estimating means from small samples."
 952,Subset,Set Theory & Logic,A set all of whose elements are also elements of another set.
-953,Subspace,Linear Algebra,A subset of a vector space that is itself a vector space under the same operations.
+953,Subspace,Linear Algebra,A subset of a vector space that is itself a vector space under the same operations.,Different attention heads project representations into different learned subspaces.
 954,Substitution Rule,Calculus,An integration technique that changes variables to simplify an integral; also called u-substitution.
 955,Summarization,NLP & LLMs,Producing a shorter version of a text that preserves its key information.
-956,Summation Notation,Algebra,Notation using the Greek letter sigma to represent the sum of a sequence of terms.
+956,Summation Notation,Algebra,Notation using the Greek letter sigma to represent the sum of a sequence of terms.,Cross-entropy may sum one loss contribution over all classes.
 957,Super-Resolution,Computer Vision,Increasing the resolution of an image while adding plausible detail.
 958,Superintelligence,AI General,Hypothetical intelligence that greatly exceeds the best human minds in virtually every domain.
 959,Superposition,AI Safety,The phenomenon where a network represents more features than it has neurons by overlapping them.
 960,Supervised Fine-Tuning,NLP & LLMs,Fine-tuning a model on labeled input-output examples; abbreviated SFT.
-961,Supervised Learning,Machine Learning,"Learning from labeled examples, where each input is paired with a known correct output that the model learns to predict."
+961,Supervised Learning,Machine Learning,"Learning from labeled examples, where each input is paired with a known correct output that the model learns to predict.",Train a classifier on images labeled cat or dog.
 962,Support Vector Machine,Machine Learning,"A model that finds the boundary maximizing the margin between classes, optionally using kernels for nonlinear boundaries."
 963,Surface Integral,Calculus,An integral of a function over a surface.
 964,Surjective Function,Set Theory & Logic,A function whose outputs cover every element of the codomain; also called onto.
@@ -977,26 +977,26 @@ id,term,category,definition
 976,T-Test,Statistics,A test comparing means of one or two groups using the t-distribution.
 977,Tangent,Geometry,"In a right triangle, the ratio of the side opposite an angle to the side adjacent to it."
 978,Tangent Line,Calculus,A straight line that touches a curve at a point and has the same slope as the curve there.
-979,Tanh,Deep Learning,"The hyperbolic tangent activation function, which maps inputs to values between -1 and 1."
+979,Tanh,Deep Learning,"The hyperbolic tangent activation function, which maps inputs to values between -1 and 1.","tanh(0) equals 0, while large positive inputs approach 1."
 980,Tautology,Set Theory & Logic,A logical statement that is true under every possible assignment of truth values.
 981,Taylor Series,Calculus,A representation of a function as an infinite sum of terms computed from its derivatives at a single point.
-982,Temperature,NLP & LLMs,"A sampling parameter that controls randomness: low values make output more deterministic, high values more varied."
+982,Temperature,NLP & LLMs,"A sampling parameter that controls randomness: low values make output more deterministic, high values more varied.",Lower temperature makes high-probability outputs more dominant; higher temperature increases diversity.
 983,Temporal Difference Learning,Reinforcement Learning,Learning value estimates by updating them toward the reward plus the estimated value of the next state.
-984,Tensor,Deep Learning,A multidimensional array of numbers; the basic data structure in deep learning frameworks.
+984,Tensor,Deep Learning,A multidimensional array of numbers; the basic data structure in deep learning frameworks.,A video batch can be stored as a tensor shaped batch x time x height x width x channels.
 985,Tensor Parallelism,AI Infrastructure,Splitting individual weight matrices across devices so each computes part of a layer.
 986,TensorFlow,AI Infrastructure,An open-source machine learning framework developed by Google.
-987,Test Set,Machine Learning,Data kept separate until the end and used to estimate how well a final model generalizes to unseen data.
+987,Test Set,Machine Learning,Data kept separate until the end and used to estimate how well a final model generalizes to unseen data.,Report final accuracy once on the test set.
 988,Test-Time Compute,NLP & LLMs,"Computation spent during inference, such as longer reasoning or multiple attempts, to improve answers."
 989,Text Classification,NLP & LLMs,Assigning predefined categories to text documents.
 990,Text-to-Image,Computer Vision,Generating images from natural language descriptions.
 991,Text-to-Speech,NLP & LLMs,Technology that converts written text into spoken audio.
 992,TF-IDF,NLP & LLMs,"Term Frequency-Inverse Document Frequency, a score reflecting how important a word is to a document within a collection."
 993,Theorem,Set Theory & Logic,A statement that has been proven true based on axioms and previously established results.
-994,Throughput,AI Infrastructure,"The amount of work, such as tokens or requests, a system processes per unit of time."
+994,Throughput,AI Infrastructure,"The amount of work, such as tokens or requests, a system processes per unit of time.",A linear-time sequence model may process more tokens per second on long contexts.
 995,Time Complexity,Discrete Math,A measure of how an algorithm's running time grows with input size.
 996,Time Series,Machine Learning,A sequence of data points indexed in time order.
-997,Token,NLP & LLMs,"A unit of text, such as a word, subword, or character, that a language model processes."
-998,Tokenization,NLP & LLMs,Splitting text into tokens that a model can process.
+997,Token,NLP & LLMs,"A unit of text, such as a word, subword, or character, that a language model processes.",The word 'playing' might become two text tokens.
+998,Tokenization,NLP & LLMs,Splitting text into tokens that a model can process.,Text is converted into subword token IDs before entering BERT.
 999,Tokenizer,NLP & LLMs,"The component that converts text into tokens and token IDs, and back again."
 1000,Tokens per Second,AI Infrastructure,A measure of how quickly a language model generates output.
 1001,Tool Use,AI Agents,"A model's ability to invoke external tools, such as search, calculators, or code execution, to complete tasks."
@@ -1007,12 +1007,12 @@ id,term,category,definition
 1006,Topology,Topology,The study of properties of spaces preserved under continuous deformations such as stretching and bending.
 1007,TPU,AI Infrastructure,"Tensor Processing Unit, a chip designed by Google specifically for machine learning workloads."
 1008,Trace,Linear Algebra,The sum of the entries on the main diagonal of a square matrix.
-1009,Training Set,Machine Learning,The portion of data used to fit a model's parameters.
-1010,Transfer Learning,Machine Learning,Reusing a model trained on one task as the starting point for a different but related task.
-1011,Transformer,Deep Learning,A neural network architecture based on self-attention that processes all positions of a sequence in parallel.
+1009,Training Set,Machine Learning,The portion of data used to fit a model's parameters.,The model updates its weights using examples in the training set.
+1010,Transfer Learning,Machine Learning,Reusing a model trained on one task as the starting point for a different but related task.,A vision model pre-trained on ImageNet can be adapted to medical images.
+1011,Transformer,Deep Learning,A neural network architecture based on self-attention that processes all positions of a sequence in parallel.,"BERT, GPT-3, and ViT are Transformer-based models."
 1012,Transition Matrix,Probability,A matrix giving the probabilities of moving from each state to every other state in a Markov chain.
 1013,Transparency,AI Ethics,"Openness about how an AI system works, what data it uses, and how decisions are made."
-1014,Transpose,Linear Algebra,The matrix obtained by swapping rows and columns of a matrix.
+1014,Transpose,Linear Algebra,The matrix obtained by swapping rows and columns of a matrix.,Attention computes Q times K transposed so every query is compared with every key.
 1015,Tree,Graph Theory,A connected graph with no cycles.
 1016,Triangle Inequality,Topology,The rule that the distance between two points is never more than the sum of distances via a third point.
 1017,Triangular Matrix,Linear Algebra,A square matrix with all zeros either above or below the main diagonal.
@@ -1021,8 +1021,8 @@ id,term,category,definition
 1020,True Negative,Machine Learning,A case where the model correctly predicts the negative class.
 1021,True Positive,Machine Learning,A case where the model correctly predicts the positive class.
 1022,Truth Table,Set Theory & Logic,A table listing the truth value of a logical expression for every combination of inputs.
-1023,Turing Machine,Discrete Math,An abstract model of computation that manipulates symbols on an infinite tape according to rules.
-1024,Turing Test,AI General,A test proposed by Alan Turing in which a machine passes if a human judge cannot reliably tell it apart from a human in conversation.
+1023,Turing Machine,Discrete Math,An abstract model of computation in which a read-write head manipulates symbols on an infinite tape according to rules; used to formalize what can be computed.,A Turing machine can be defined to scan symbols on a tape and apply rules until it halts.
+1024,Turing Test,AI General,A test proposed by Alan Turing in which a machine passes if a human judge cannot reliably tell it apart from a human in conversation.,"If judges cannot reliably tell which chat participant is the machine, the machine is said to pass the test."
 1025,Type I Error,Statistics,Rejecting a true null hypothesis; a false positive.
 1026,Type II Error,Statistics,Failing to reject a false null hypothesis; a false negative.
 1027,U-Net,Computer Vision,"A convolutional encoder-decoder architecture with skip connections, used for image segmentation and diffusion models."
@@ -1038,15 +1038,15 @@ id,term,category,definition
 1037,Unit Vector,Linear Algebra,A vector with length one.
 1038,Universal Approximation Theorem,Deep Learning,A result stating that a neural network with one hidden layer and enough neurons can approximate any continuous function on a bounded domain.
 1039,Universal Quantifier,Set Theory & Logic,"The quantifier meaning for all, written as an upside-down A."
-1040,Unsupervised Learning,Machine Learning,"Learning patterns or structure from data that has no labels, such as grouping similar items or compressing information."
-1041,Validation Set,Machine Learning,Data held out from training and used to tune hyperparameters and compare model versions.
-1042,Value Function,Reinforcement Learning,A function estimating the expected total future reward from a given state.
-1043,Vanishing Gradient,Deep Learning,"A problem where gradients become extremely small in early layers, causing them to learn very slowly."
+1040,Unsupervised Learning,Machine Learning,"Learning patterns or structure from data that has no labels, such as grouping similar items or compressing information.",A world model can learn from unlabeled videos.
+1041,Validation Set,Machine Learning,Data held out from training and used to tune hyperparameters and compare model versions.,Choose the best learning rate based on validation loss.
+1042,Value Function,Reinforcement Learning,A function estimating the expected total future reward from a given state or state-action pair.,"A GAN defines a value function V(D,G) for the discriminator-generator game."
+1043,Vanishing Gradient,Deep Learning,"A problem where gradients become extremely small in early layers, causing them to learn very slowly.",Early layers may barely update if each backward step multiplies by a value smaller than 1.
 1044,Variable,Algebra,"A symbol, usually a letter, representing an unknown or changeable value."
-1045,Variance,Probability,"The expected squared deviation of a random variable from its mean, measuring spread."
-1046,Variational Autoencoder,Deep Learning,"A generative autoencoder that learns a probability distribution over a latent space, allowing new samples to be generated."
-1047,Variational Inference,Statistics,Approximating a complex posterior distribution with a simpler one by optimization.
-1048,Vector,Linear Algebra,"An ordered list of numbers representing a quantity with magnitude and direction, or a point in space."
+1045,Variance,Probability,"The expected squared deviation of a random variable from its mean, measuring spread.","If attention dot products have growing variance, scaling can keep softmax stable."
+1046,Variational Autoencoder,Deep Learning,"A generative autoencoder that learns a probability distribution over a latent space, allowing new samples to be generated.","Encode a frame into a latent Gaussian, sample z, then decode it back to pixels."
+1047,Variational Inference,Statistics,Approximating a complex posterior distribution with a simpler one by optimization.,A VAE uses an encoder distribution q(z|x) to approximate latent inference.
+1048,Vector,Linear Algebra,"An ordered list of numbers representing a quantity with magnitude and direction, or a point in space.",An embedding might be a vector with 768 components.
 1049,Vector Database,NLP & LLMs,A database designed to store embeddings and quickly find vectors similar to a query.
 1050,Vector Field,Calculus,An assignment of a vector to each point in space.
 1051,Vector Space,Linear Algebra,"A set of vectors closed under addition and scalar multiplication, satisfying certain axioms."
@@ -1054,20 +1054,260 @@ id,term,category,definition
 1053,Vertex,Graph Theory,A point or node in a graph; plural vertices.
 1054,Vision Transformer,Computer Vision,A transformer applied to images by splitting them into patches and treating each patch as a token.
 1055,Vision-Language Model,NLP & LLMs,A model that jointly understands images and text.
-1056,Vocabulary,NLP & LLMs,The fixed set of tokens a model can recognize and produce.
-1057,Warmup,Deep Learning,Gradually increasing the learning rate at the start of training to stabilize early updates.
+1056,Vocabulary,NLP & LLMs,The fixed set of tokens a model can recognize and produce.,"A tokenizer may have a vocabulary of 50,000 token IDs."
+1057,Warmup,Deep Learning,Gradually increasing the learning rate at the start of training to stabilize early updates.,The original Transformer increases learning rate during its first several thousand steps.
 1058,Weak Learner,Machine Learning,"A model that performs only slightly better than random guessing, used as a building block in boosting."
-1059,Weight,Deep Learning,A learned number that scales the strength of a connection between two neurons.
-1060,Weight Decay,Deep Learning,"A regularization technique that shrinks weights slightly at each update, equivalent to L2 regularization in plain SGD."
-1061,Weight Initialization,Deep Learning,"The method for setting a network's starting weights, which strongly affects training stability."
+1059,Weight,Deep Learning,A learned number that scales the strength of a connection between two neurons.,"If a weight on feature x is large and positive, increasing x can strongly increase the next activation."
+1060,Weight Decay,Deep Learning,"A regularization technique that shrinks weights slightly at each update, equivalent to L2 regularization in plain SGD.",AlexNet applies a small weight-decay term to its weights.
+1061,Weight Initialization,Deep Learning,"The method for setting a network's starting weights, which strongly affects training stability.",Weights may start as small random values drawn from a Gaussian distribution.
 1062,Weighted Average,Statistics,An average in which each value is multiplied by a weight reflecting its importance.
 1063,Weighted Graph,Graph Theory,"A graph in which each edge has a numerical weight, such as a distance or cost."
 1064,Word Embedding,NLP & LLMs,A vector representation of a word in which words with similar meanings have similar vectors.
 1065,Word2Vec,NLP & LLMs,A method that learns word embeddings by predicting words from their context or context from words.
-1066,WordPiece,NLP & LLMs,A subword tokenization algorithm used by models such as BERT.
+1066,WordPiece,NLP & LLMs,"A subword tokenization algorithm, used by models such as BERT, that represents rare words as combinations of common pieces.",A rare word can be represented as a base piece plus continuation pieces.
 1067,Xavier Initialization,Deep Learning,A weight initialization that scales random weights based on the number of inputs and outputs of a layer; also called Glorot initialization.
 1068,XGBoost,Machine Learning,"A popular, highly optimized library and algorithm for gradient-boosted decision trees."
 1069,YOLO,Computer Vision,"You Only Look Once, a family of fast real-time object detection models."
 1070,Z-Score,Statistics,The number of standard deviations a value lies from the mean.
 1071,Zero Matrix,Linear Algebra,A matrix in which every entry is zero.
-1072,Zero-Shot Learning,NLP & LLMs,"Performing a task without any task-specific examples, relying only on instructions or prior knowledge."
+1072,Zero-Shot Learning,NLP & LLMs,"Performing a task without any task-specific examples, relying only on instructions or prior knowledge.",Ask GPT-3 to translate with only the instruction and no demonstrations.
+1073,Imitation Game,AI General,Turing's original experimental setup for replacing the vague question of whether machines can think with an observable conversational test.,A judge exchanges text messages with hidden participants and tries to identify which is human.
+1074,Universal Machine,Discrete Math,A machine that can simulate any other machine when given that machine's description and input.,A general-purpose computer approximates the idea because software lets the same hardware implement many algorithms.
+1075,Discrete-State Machine,Discrete Math,A system whose internal condition can be represented as one of a finite or countable set of distinct states.,"A traffic light controller may have RED, YELLOW, and GREEN as discrete states."
+1076,Computability,Discrete Math,The study of which problems can in principle be solved by an algorithmic procedure.,"Sorting a finite list is computable, while the general halting problem is not."
+1077,Hidden Unit,Deep Learning,A neuron whose output is internal to the network rather than directly observed as an input or final target.,A hidden unit may become sensitive to edges even though no edge labels were provided.
+1078,Saturation,Deep Learning,"A regime where an activation changes very little as its input changes, causing very small derivatives.",A sigmoid fed a very large positive number is near 1 and has almost zero slope.
+1079,Squared Error,Statistics,A loss based on the square of the difference between a prediction and a target.,Predicting 3 when the target is 5 gives squared error (3 - 5)^2 = 4.
+1080,Gradient Ascent,Optimization,Optimization that moves parameters in the direction of the gradient to maximize an objective.,A discriminator can be described as ascending a value function while a generator minimizes it.
+1081,Minibatch,Machine Learning,A small subset of training examples processed together to estimate a gradient.,A batch size of 128 means each update uses 128 examples.
+1082,Distributed Representation,Deep Learning,A representation where information is encoded across many units rather than assigned to one dedicated symbol or neuron.,A concept like 'dog' may be represented by a pattern across hundreds of hidden dimensions.
+1083,Representation,Deep Learning,A numeric encoding of data used internally by a model.,A sentence can be represented as a 768-dimensional embedding.
+1084,Gaussian Initialization,Deep Learning,Initializing parameters by sampling them from a normal distribution.,"A layer's weights might start from N(0, 0.01^2)."
+1085,Co-Adaptation,Deep Learning,"A situation where features depend too heavily on specific other features being present, which can hurt generalization.",Dropout reduces co-adaptation by randomly removing teammates a neuron might otherwise rely on.
+1086,Group Normalization,Deep Learning,Normalization that divides channels into groups and normalizes within each group.,A vision model can use GroupNorm when batch sizes are too small for stable BatchNorm.
+1087,Residual Learning,Deep Learning,Learning a change relative to an input rather than learning the full desired mapping directly.,A block learns F(x) so its output is x + F(x).
+1088,Residual Function,Deep Learning,The learned correction F(x) in a residual block.,"If the desired mapping is H(x), ResNet defines F(x)=H(x)-x."
+1089,Residual Block,Deep Learning,A neural-network block that adds its input to the output of one or more learned layers.,A two-layer block returns x + F(x).
+1090,Identity Mapping,Algebra,A function that returns its input unchanged.,The ResNet shortcut can use the identity mapping I(x)=x.
+1091,Bottleneck Block,Deep Learning,"A residual block that compresses channel width, processes it, then expands it again to reduce computation.","A ResNet bottleneck often uses 1x1, 3x3, then 1x1 convolutions."
+1092,Degradation Problem,Deep Learning,"The observation that simply adding more layers to a deep network can make training error worse, even without classical overfitting.",A 56-layer plain network can train worse than a 20-layer plain network.
+1093,End-to-End Training,Deep Learning,Training a whole pipeline jointly from raw input to final objective rather than optimizing hand-separated stages.,A vision model learns patch projection and classifier together from image labels.
+1094,Filter,Computer Vision,A convolutional kernel whose learned weights detect a particular local pattern.,"Different filters can learn edges, textures, or object parts."
+1095,Overlapping Pooling,Computer Vision,Pooling where adjacent windows overlap because the stride is smaller than the pooling window.,A 3x3 max pool with stride 2 has overlapping windows.
+1096,Local Response Normalization,Computer Vision,An older normalization method that suppresses a response relative to nearby channel responses.,AlexNet used local response normalization after some ReLU layers.
+1097,Lateral Inhibition,Deep Learning,Competition between nearby units in which a strong activation suppresses neighboring activations.,Local response normalization was motivated by a lateral-inhibition-like effect.
+1098,Translation Equivariance,Computer Vision,A property where shifting the input causes a corresponding shift in the representation rather than an unrelated change.,Shift an object right in an image and a convolutional feature map shifts right too.
+1099,Locality,Deep Learning,The architectural assumption that nearby input elements interact more directly than distant ones.,A 3x3 convolution has a strong locality bias because it only sees nearby pixels.
+1100,Inductive Bias,Machine Learning,An architectural or learning assumption that makes some solutions easier for a model to learn than others.,CNNs encode locality and translation equivariance as inductive biases.
+1101,Image Patch,Computer Vision,A small rectangular region of an image treated as one unit by a vision model.,ViT can split a 224x224 image into 16x16 pixel patches.
+1102,Patch Embedding,Computer Vision,The vector representation obtained by flattening an image patch and projecting it into the Transformer embedding dimension.,A 16x16 RGB patch is linearly mapped into a 768-dimensional token.
+1103,Class Token,Computer Vision,A learned special token prepended to patch tokens whose final representation is used for classification.,ViT feeds the final class-token embedding into the classifier head.
+1104,L1 Norm,Linear Algebra,The sum of absolute values of a vector's components.,"The L1 norm of [-2,3] is 5."
+1105,L2 Norm,Linear Algebra,"The square root of the sum of squared components, also called the Euclidean norm.","The L2 norm of [3,4] is 5."
+1106,Index,Linear Algebra,"An integer label identifying a position in a sequence, vector, matrix, or tensor.",x_i means the i-th component of x.
+1107,Matrix Exponential,Linear Algebra,A matrix-valued analogue of the exponential function used to solve and discretize linear differential equations.,Mamba's state discretization can involve exp(Delta A).
+1108,Square-Root Scaling,Deep Learning,Dividing or multiplying by a square root to stabilize a quantity whose variance grows with dimension.,Scaled dot-product attention divides QK^T by sqrt(d_k).
+1109,Probability Density,Probability,A function describing relative likelihood for a continuous random variable; probabilities come from integrating it over ranges.,A Gaussian density is highest near its mean.
+1110,Joint Distribution,Probability,A probability distribution over multiple variables considered together.,"P(x,y) describes how images x and labels y occur jointly."
+1111,Marginal Distribution,Probability,A distribution over a subset of variables obtained by summing or integrating out the others.,"From P(x,z), integrate over z to obtain P(x)."
+1112,Prior Distribution,Probability,"A distribution specified before observing the current evidence, often over latent variables or parameters.",A GAN samples a latent vector z from a simple noise prior.
+1113,Posterior Distribution,Probability,A distribution over unknown variables after conditioning on observed data.,A latent-variable model may seek P(z | x) after seeing x.
+1114,Empirical Expectation,Statistics,An expectation approximated by averaging over observed samples rather than the true underlying distribution.,Average the loss over a minibatch to estimate expected loss.
+1115,Gaussian Distribution,Probability,The normal bell-shaped probability distribution parameterized by a mean and variance.,"A VAE may sample latent noise from N(0,1)."
+1116,Multivariate Gaussian,Probability,"A Gaussian distribution over a vector, described by a mean vector and covariance matrix.",A two-dimensional Gaussian can model correlated x and y coordinates.
+1117,Mixture Model,Probability,A probabilistic model that represents data as coming from a weighted combination of component distributions.,A trajectory prediction may combine several Gaussian components for multiple possible futures.
+1118,Mixture Density Network,Deep Learning,A neural network that outputs the parameters and weights of a mixture distribution rather than one point prediction.,World Models uses an MDN-RNN to predict a mixture of possible next latent states.
+1119,Jensen-Shannon Divergence,Probability,"A symmetric, smoothed divergence between distributions built from KL divergence.",The original GAN analysis shows its ideal objective is related to Jensen-Shannon divergence between p_data and p_g.
+1120,Log-Likelihood,Statistics,"The logarithm of likelihood, used because sums of log probabilities are numerically and mathematically easier than products.",Sequence log-likelihood is the sum of log probabilities assigned to its observed tokens.
+1121,Negative Log-Likelihood,Statistics,"The negative log of model likelihood, commonly minimized as a loss.",Predicting the correct class with probability 0.1 gives NLL = -log(0.1).
+1122,Supremum,Calculus,"The least upper bound of a set of values, often used when a maximum may not be attained.",sup_x f(x) is the smallest number that is at least as large as every f(x).
+1123,Argmin,Optimization,"The input value that minimizes a function, rather than the minimum function value itself.","argmin_z E(x,z) returns the latent z with lowest energy."
+1124,Argmax,Optimization,The input value that maximizes a function.,A classifier prediction can be argmax over class probabilities.
+1125,Closed-Form Solution,Algebra,A solution expressible directly with a finite formula rather than requiring iterative numerical optimization.,Ordinary least squares has a closed-form solution under standard conditions.
+1126,Optimization Objective,Optimization,The scalar function an algorithm is designed to minimize or maximize.,"For training, the objective might be cross-entropy plus a regularization penalty."
+1127,Minimax Game,Optimization,An optimization game in which one player minimizes an objective while another maximizes it.,"In a GAN, the generator tries to fool the discriminator while the discriminator tries to detect fakes."
+1128,Subgradient,Optimization,A generalized derivative for certain non-differentiable convex functions.,"At a kink such as |x| at x=0, optimization can use a subgradient."
+1129,Mixing,Probability,How quickly a Markov chain forgets its starting point and approaches its stationary distribution.,A slowly mixing chain needs many transitions before its samples are reliable.
+1130,Annealed Importance Sampling,Statistics,A sampling and estimation method that bridges from an easy distribution to a hard one through intermediate distributions.,AIS can estimate partition functions for probabilistic models.
+1131,Approximate Inference,Probability,Estimating hidden variables or probability distributions when exact inference is computationally impractical.,GANs avoid some forms of explicit approximate inference required by other generative models.
+1132,Parzen Window Estimator,Statistics,A non-parametric density estimator that places a smooth kernel around each observed sample.,Older generative-model evaluations fit Parzen windows to generated samples to estimate test likelihood.
+1133,Data Manifold,Machine Learning,The idea that high-dimensional real data often lies near a much lower-dimensional structured subset of the ambient space.,Natural images occupy a tiny structured region of all possible pixel arrays.
+1134,Regularizer,Machine Learning,An extra term or constraint added to a learning objective to favor desirable solutions.,An L1 regularizer favors sparse representations.
+1135,InfoNCE,Deep Learning,A contrastive loss that trains matching pairs to score higher than many non-matching negative examples.,A representation of an image should be more similar to its paired augmentation than to other images in the batch.
+1136,Representation Collapse,Deep Learning,A failure mode where a representation model maps many or all inputs to nearly the same vector.,"If every image maps to [0,0,...,0], the encoder has collapsed."
+1137,Sparse Coding,Machine Learning,Representing data using only a small number of active coefficients from a larger dictionary.,"An image patch may be reconstructed from 5 active basis vectors out of 1,000."
+1138,Energy Function,Machine Learning,A scalar function assigning lower values to configurations considered more compatible or plausible.,An energy model can assign low energy to matching image-text pairs and high energy to mismatches.
+1139,Energy Landscape,Machine Learning,"The geometry of an energy function across possible configurations, including valleys, peaks, and flat regions.",Planning can be viewed as searching for a low-energy trajectory through an energy landscape.
+1140,Level Set,Calculus,The set of inputs at which a function takes the same value.,"All z satisfying E(x,z)=c form a level set of the energy function."
+1141,Gibbs Distribution,Probability,"A probability distribution proportional to exp(-energy), linking energy-based models to normalized probabilities.",Lower-energy states receive exponentially more probability mass.
+1142,Latent-Variable Model,Machine Learning,A probabilistic or energy-based model containing hidden variables that help explain observed data.,A VAE models an image x using an unobserved latent z.
+1143,Latent-Variable Energy-Based Model,Machine Learning,An energy-based model whose score also depends on hidden variables that can absorb unpredictable details.,"Prediction can minimize E(x,y,z) over z before judging candidate y."
+1144,Sequence Model,Deep Learning,A model designed for ordered data where position and context matter.,Language models process token sequences.
+1145,Sequence Transduction,NLP & LLMs,"Mapping one sequence to another, often with different lengths.",Machine translation maps an English token sequence to a French token sequence.
+1146,Encoder-Decoder Architecture,Deep Learning,A model with one component that encodes input and another that generates or predicts output from that representation.,Machine translation can encode the source sentence then decode the target sentence.
+1147,Recurrence,Deep Learning,Repeatedly applying the same state-update computation across sequence positions or time steps.,"An RNN uses h_t = f(h_{t-1}, x_t)."
+1148,Attention,Deep Learning,A mechanism that forms an output by weighting information from a set of positions according to relevance.,A translation model can give high attention weight to the source word corresponding to the word being generated.
+1149,Query,Deep Learning,"In attention, a vector representing what a position is looking for.",A token's query is compared with keys from other tokens.
+1150,Key,Deep Learning,"In attention, a vector used to determine how relevant a source position is to a query.",The query-key dot product contributes to an attention score.
+1151,Value,Deep Learning,"In attention, the vector whose information is mixed into the output according to attention weights.","After softmax, weights are used to take a weighted sum of value vectors."
+1152,Attention Score,Deep Learning,A compatibility score between a query and key before or after normalization.,QK^T contains raw dot-product attention scores.
+1153,Attention Head,Deep Learning,One independently parameterized attention computation inside multi-head attention.,One head might focus on nearby syntax while another tracks long-range references.
+1154,Mask,Deep Learning,A rule that prevents selected positions or elements from participating in a computation.,Set forbidden attention scores to negative infinity before softmax.
+1155,Position-Wise Feed-Forward Network,Deep Learning,A small neural network applied independently to each sequence position with shared weights.,A Transformer applies the same two-layer MLP to every token after attention.
+1156,Token Embedding,NLP & LLMs,The vector representation associated with a token identity.,BERT looks up an embedding for each WordPiece token.
+1157,Sinusoidal Positional Encoding,NLP & LLMs,A fixed positional encoding built from sine and cosine waves at different frequencies.,Position 10 receives a different combination of sinusoid values from position 11.
+1158,Weight Tying,Deep Learning,Sharing the same parameter matrix across multiple model roles.,A language model can reuse its token embedding matrix for output logits.
+1159,Concatenation,Linear Algebra,Joining vectors or tensors along a dimension.,Multi-head attention concatenates head outputs before the final projection.
+1160,Sequence Length,NLP & LLMs,The number of ordered elements or tokens in a model input.,"A context of 2,048 tokens has sequence length 2,048."
+1161,Long-Range Dependency,Deep Learning,A relationship between sequence elements that are far apart.,A pronoun near the end of a document may depend on a name hundreds of tokens earlier.
+1162,Path Length,Deep Learning,The number of sequential computational steps information must traverse between two positions in a network.,Self-attention gives any two tokens a path length of roughly one attention layer.
+1163,Parallelization,AI Infrastructure,Performing independent computations simultaneously rather than step by step.,Transformer token computations can be highly parallel during training compared with a traditional RNN.
+1164,Computational Complexity,Discrete Math,How computation or memory requirements grow as input size increases.,Full self-attention has quadratic pairwise interaction cost in sequence length.
+1165,Quadratic Complexity,Discrete Math,A cost that grows proportionally to the square of input size.,Doubling sequence length makes an O(n^2) attention matrix about four times larger.
+1166,Linear Complexity,Discrete Math,A cost that grows proportionally to input size.,Doubling sequence length roughly doubles work for an O(n) recurrence.
+1167,Subquadratic Complexity,Discrete Math,Any asymptotic cost growing more slowly than n squared.,O(n log n) is subquadratic.
+1168,Label Smoothing,Deep Learning,Training with slightly softened target probabilities instead of a perfect one-hot target.,The correct class might get target 0.9 while 0.1 is spread across other classes.
+1169,Beam Size,NLP & LLMs,The number of partial hypotheses retained by beam search.,Beam size 4 keeps four candidate continuations alive.
+1170,Length Penalty,NLP & LLMs,A decoding adjustment that prevents sequence scores from unfairly favoring very short or very long outputs.,Translation beam search can divide log score by a function of output length.
+1171,Checkpoint Averaging,Deep Learning,Combining parameters from multiple saved training checkpoints to obtain a more stable final model.,Average the last five model checkpoints before evaluation.
+1172,Bidirectional Context,NLP & LLMs,Using information from both the left and right sides of a position when building its representation.,BERT can use words before and after a masked token to predict it.
+1173,Mask Token,NLP & LLMs,A special placeholder inserted where content has been hidden for a masked prediction objective.,BERT replaces some selected words with [MASK].
+1174,Next Sentence Prediction,NLP & LLMs,BERT's original pre-training task for predicting whether one text segment follows another in the source corpus.,"Given sentence A and B, predict whether B was actually the next sentence."
+1175,Segment Embedding,NLP & LLMs,A learned vector identifying which input segment a token belongs to.,Tokens from sentence A receive one segment embedding and sentence B another.
+1176,[CLS] Token,NLP & LLMs,A special BERT token inserted at the beginning whose final representation is commonly used for sequence-level classification.,A sentiment classifier reads the final [CLS] vector.
+1177,[SEP] Token,NLP & LLMs,A special BERT token used to separate text segments or mark sequence boundaries.,Question and passage can be separated with [SEP].
+1178,Downstream Task,Machine Learning,A specific application to which a pre-trained model is later adapted or evaluated.,Named-entity recognition is a downstream task for a language encoder.
+1179,Task-Specific Head,NLP & LLMs,A small output module added to a general representation model for one downstream task.,Add a two-class linear head on BERT for sentiment classification.
+1180,Span Prediction,NLP & LLMs,Predicting the start and end positions of an answer or other contiguous segment in a sequence.,"For question answering, choose token 12 as start and token 16 as end."
+1181,Task-Agnostic Model,Machine Learning,A model trained broadly rather than with a separate architecture and training run for each specific task.,GPT-3 uses one language-model objective and performs many tasks through prompting.
+1182,Benchmark Contamination,Data & MLOps,"Accidental overlap between evaluation data and training data, which can inflate measured performance.",A test question copied from the web may already appear in a model's training corpus.
+1183,Deduplication,Data & MLOps,Removing identical or near-duplicate training examples to reduce repetition and leakage.,Filter repeated web pages before language-model training.
+1184,Memorization,Machine Learning,A model reproducing specific training content rather than only learning general patterns.,A language model may emit a passage nearly verbatim if it was repeated many times during training.
+1185,Held-Out Set,Machine Learning,Data deliberately excluded from training and used for evaluation or analysis.,A held-out validation corpus measures language-model loss on unseen text.
+1186,Validation Loss,Machine Learning,Loss measured on held-out validation data rather than the training data.,A model whose training loss falls while validation loss rises may be overfitting.
+1187,Adversarial Training,Deep Learning,Training components with opposing objectives so each component's improvement pressures the other to improve.,The GAN discriminator learns to spot fakes while the generator learns to fool it.
+1188,Data Distribution,Probability,The unknown probability distribution that generates real observed examples.,p_data represents the distribution of real images.
+1189,Model Distribution,Probability,The probability distribution over samples induced by a generative model.,p_g is the distribution produced when z is sampled and passed through G.
+1190,Noise Prior,Deep Learning,A simple source distribution from which latent inputs to a generator are sampled.,Sample z from a standard Gaussian before passing it to a GAN generator.
+1191,Support of a Distribution,Probability,The set of values or regions that have nonzero probability or density under a distribution.,"If generated samples never include blue cars, that region may be outside the model distribution's support."
+1192,Density Estimation,Statistics,Estimating the probability density of observed data.,A likelihood-based generative model tries to assign high density to real samples.
+1193,Observation,Reinforcement Learning,Information the agent receives from the environment at a time step.,A camera frame is an observation.
+1194,Cumulative Reward,Reinforcement Learning,The sum of rewards accumulated across multiple time steps.,"Rewards [1,0,2] give cumulative reward 3."
+1195,Expected Return,Reinforcement Learning,"The expected cumulative future reward under a policy, often with discounting.",A policy is preferred if its expected return is higher.
+1196,Rollout,Reinforcement Learning,"A simulated or real sequence of states, observations, actions, and rewards produced by following a policy.","Run the controller for 1,000 simulated steps to evaluate one rollout."
+1197,Trajectory,Reinforcement Learning,"An ordered path through states, actions, and possibly rewards over time.",A driving trajectory records positions and steering actions across an episode.
+1198,Model-Based Reinforcement Learning,Reinforcement Learning,Reinforcement learning that uses a learned or known model of environment dynamics for planning or policy learning.,"Train a world model, then optimize a controller inside its simulated rollouts."
+1199,Model-Free Reinforcement Learning,Reinforcement Learning,Reinforcement learning that learns behavior without explicitly learning a predictive environment model.,Q-learning can learn action values directly from experience.
+1200,World Model,AI General,"An internal predictive model of how an environment evolves, used to understand, simulate, or plan possible futures.",A model predicts future game states from the current state and chosen actions.
+1201,Dynamics Model,Reinforcement Learning,"A model that predicts how state changes over time, often conditioned on actions.","Given state s_t and action a_t, predict s_{t+1}."
+1202,Transition Model,Reinforcement Learning,A model of the rule or distribution governing the next state from the current state and action.,"P(s_{t+1}|s_t,a_t) is a stochastic transition model."
+1203,Controller,Reinforcement Learning,A policy component that converts model state or observations into actions.,World Models uses a small controller to choose steering from latent state and RNN memory.
+1204,Credit Assignment,Reinforcement Learning,Determining which earlier actions or parameters were responsible for a later reward or error.,"If reward arrives 100 steps later, the learner must assign credit to earlier decisions."
+1205,Reconstruction Loss,Deep Learning,A loss measuring how closely a decoder reproduces the original input from its representation.,Compare an original frame with the VAE's reconstructed frame pixel by pixel.
+1206,Latent Code,Deep Learning,A compact internal code representing an input or generated state.,A video tokenizer maps a frame region to a discrete latent code.
+1207,MDN-RNN,Deep Learning,A recurrent neural network whose output parameterizes a mixture density model for the next state.,World Models predicts multiple possible next latent vectors using an MDN-RNN.
+1208,CMA-ES,Optimization,"Covariance Matrix Adaptation Evolution Strategy, a derivative-free optimizer that evolves a distribution over candidate parameter vectors.",World Models can optimize controller weights by evaluating many parameter samples and updating the search distribution.
+1209,Evolution Strategy,AI General,A population-based optimization method that mutates or samples candidate solutions and favors higher-performing ones.,"Evaluate 100 controller variants, then shift the sampling distribution toward the best performers."
+1210,Hallucinated Environment,Reinforcement Learning,A generated simulation produced by a learned world model rather than the real environment.,The controller trains entirely inside imagined racing rollouts.
+1211,Joint Embedding Predictive Architecture,Deep Learning,"JEPA, an architecture that predicts representations of target observations from representations of context rather than reconstructing every raw detail.",Predict the embedding of a future image region from the embedding of the visible context.
+1212,Joint Embedding,Deep Learning,Mapping related inputs into representation spaces where their compatibility can be predicted or compared.,Context x and target y are encoded before a predictor estimates y's representation.
+1213,Predictor,Deep Learning,"A module that maps a context representation, and possibly auxiliary variables, to a predicted target representation.","In JEPA, the predictor estimates the embedding of an unseen target."
+1214,Configurator,AI General,"In LeCun's proposed cognitive architecture, a module that configures other modules for the current task or situation.",The configurator can bias perception and the world model toward task-relevant variables.
+1215,Actor,Reinforcement Learning,A module that proposes actions or action sequences.,The actor generates candidate motor commands for a planner.
+1216,Critic,Reinforcement Learning,"A module that evaluates states, outcomes, or action sequences using a cost or value signal.",The critic scores whether a planned trajectory is desirable.
+1217,Intrinsic Cost,AI General,An internally generated cost signal reflecting built-in preferences or constraints rather than an external task reward.,A robot may assign intrinsic cost to unstable or dangerous body configurations.
+1218,Intrinsic Motivation,AI General,"Behavioral drive arising from internal objectives such as curiosity, novelty, or competence rather than external rewards alone.",An agent explores an unfamiliar region because novelty itself is valuable.
+1219,Associative Memory,AI General,A memory system that retrieves stored information from partial or similar cues rather than exact addresses.,A partial visual pattern retrieves a related stored representation.
+1220,Hierarchical Planning,AI General,"Planning at multiple levels of abstraction, using coarse goals before refining them into detailed actions.","First plan 'go to the kitchen', then plan individual footsteps."
+1221,Subgoal,AI General,An intermediate objective selected to help reach a larger goal.,Opening a door is a subgoal on the way to entering a room.
+1222,Abstraction,AI General,A representation that suppresses low-level detail while preserving information relevant to reasoning or prediction.,A planner may represent 'car ahead' instead of every pixel of the car.
+1223,Non-Contrastive Learning,Deep Learning,Representation learning that avoids explicit negative examples and uses other constraints to prevent collapse.,A model predicts one view's representation from another while variance regularization prevents constant outputs.
+1224,Foundation World Model,AI General,A broadly trained world model intended to support many environments or tasks rather than one narrow simulator.,Genie learns from diverse internet videos and can generate many kinds of interactive scenes.
+1225,Spatiotemporal Token,Computer Vision,A discrete or continuous representation corresponding to a region across space and time.,A video tokenizer can represent a small block of consecutive frames as one token.
+1226,Video Tokenizer,Computer Vision,A model that compresses video into a sequence or grid of latent tokens.,Genie converts raw frames into discrete tokens before its dynamics model predicts them.
+1227,Spatiotemporal Transformer,Computer Vision,A Transformer architecture that models both spatial and temporal relationships in video.,One attention stage mixes locations within a frame while another mixes the same locations across frames.
+1228,Spatial Attention,Computer Vision,Attention over positions within the same image or frame.,A pixel-region token attends to other regions in the current frame.
+1229,Temporal Attention,Computer Vision,Attention over positions across time.,A patch token attends to related patches in earlier video frames.
+1230,Latent Action,Reinforcement Learning,An unobserved action representation inferred from how consecutive observations change.,"If a character moves right between frames, the model may infer a latent 'move right' action."
+1231,Latent Action Model,Reinforcement Learning,A model that discovers action-like latent variables from observation sequences without requiring labeled action inputs.,Genie's LAM infers a small discrete action code from consecutive frames.
+1232,Controllability,AI General,The extent to which a model's generated future can be reliably influenced by an action or control input.,Pressing 'left' should consistently move the generated character left.
+1233,Vector Quantization,Deep Learning,Mapping a continuous vector to the nearest entry in a finite learned codebook.,An encoder output is replaced with codebook vector number 137.
+1234,VQ-VAE,Deep Learning,"Vector-Quantized Variational Autoencoder, an autoencoder that represents inputs using discrete codebook entries.",A frame is encoded to discrete indices and decoded back to pixels.
+1235,Codebook,Deep Learning,A finite learned collection of vectors used as discrete latent symbols in vector quantization.,"A VQ model may choose one of 1,024 codebook entries for each latent position."
+1236,Discrete Latent,Deep Learning,A hidden representation restricted to a finite set of categories or codebook entries.,A discovered action can be one of eight discrete latent action IDs.
+1237,MaskGIT,Computer Vision,"A masked generative modeling approach that iteratively predicts masked tokens, often in parallel rather than strictly left-to-right.","Start with many masked video tokens, predict confident ones, then repeat for the remaining masks."
+1238,Masked Generative Model,Deep Learning,A generative model trained to reconstruct tokens hidden by random masks.,Hide 60 percent of image tokens and train the model to predict them.
+1239,Stop-Gradient,Deep Learning,An operation that treats a value as constant during backpropagation so gradients do not flow through that path.,stopgrad(target_embedding) prevents the target encoder branch from receiving gradients from a prediction loss.
+1240,Bernoulli Masking,Deep Learning,Random masking where each item is independently kept or hidden according to a Bernoulli probability.,Each token may be masked with probability 0.3.
+1241,Scaling Analysis,Deep Learning,"Studying how model quality changes as compute, data, or parameter counts increase.",Train several Genie sizes and plot validation loss against parameter count.
+1242,Text-Conditioned Generation,Deep Learning,Generation where text is supplied as a conditioning signal that guides the output distribution.,Sora generates a video conditioned on a prompt describing a city street.
+1243,Diffusion Transformer,Deep Learning,A Transformer used as the denoising network inside a diffusion model.,Sora processes noisy spacetime patches with a Transformer to predict cleaner latent content.
+1244,Spacetime Patch,Computer Vision,"A localized block spanning both spatial dimensions and time, analogous to an image patch extended across video frames.",A video can be divided into small height x width x time blocks.
+1245,Compressed Latent Space,Computer Vision,A lower-dimensional encoded space in which generation is performed instead of directly operating on raw pixels.,Sora first compresses video and runs its generative model on latent spacetime patches.
+1246,Video Compression Network,Computer Vision,An encoder-decoder system that maps raw video into compact latent representations and reconstructs video from them.,Encode 1080p video to a smaller latent tensor before diffusion training.
+1247,Re-Captioning,Computer Vision,Generating richer or more descriptive text captions for training media to improve text-conditioning quality.,A captioner rewrites 'dog running' into a detailed description of the dog's motion and setting.
+1248,Zero-Shot Editing,Computer Vision,Modifying media using a generative model without task-specific editing training.,Change the style of a video using a text instruction even though the model was not separately trained for that exact edit.
+1249,SDEdit,Computer Vision,A diffusion-based editing technique that adds noise to an input and then denoises it under new conditioning.,"Partially noise an existing image, then denoise it using a new text prompt."
+1250,World Simulator,AI General,A generative model whose outputs exhibit enough coherent dynamics that it can approximate aspects of an evolving environment.,A video model generates a camera moving through a scene while maintaining much of the scene's geometry.
+1251,Emergent Capability,AI General,A behavior that becomes visible from scale or training even though it was not directly specified as a separate objective.,A large video model begins maintaining some object persistence without an explicit object-permanence loss.
+1252,State-Space Model,Deep Learning,A sequence model that represents a system with a latent state updated over time and used to produce outputs.,h_t = A h_{t-1} + B x_t and y_t = C h_t is a simple state-space model.
+1253,Structured State-Space Model,Deep Learning,An SSM whose state matrices are constrained or parameterized to make long-sequence computation efficient.,S4 uses special structure in its state dynamics to model long contexts efficiently.
+1254,Selective State-Space Model,Deep Learning,An SSM whose dynamics depend on the current input so it can selectively retain or discard information.,Mamba changes state-update parameters based on each incoming token.
+1255,Continuous-Time System,Calculus,"A dynamical system defined over continuous time, often with differential equations.",dh/dt = A h(t) + B x(t) describes continuous state evolution.
+1256,Discrete-Time System,Discrete Math,A dynamical system updated at separate indexed steps.,h_t = A_bar h_{t-1} + B_bar x_t updates once per token.
+1257,State-Space Equation,Linear Algebra,An equation describing how a hidden state evolves and how outputs are produced from that state.,"dh/dt = A h + B x, y = C h."
+1258,State Transition Matrix,Linear Algebra,A matrix describing how the current state transforms into the next state in a linear dynamical system.,A_bar multiplies h_{t-1} to contribute to h_t.
+1259,Discretization,Calculus,Converting a continuous-time mathematical system into a discrete-time update suitable for sampled data or computation.,Convert dh/dt = A h + B x into h_t = A_bar h_{t-1} + B_bar x_t.
+1260,Zero-Order Hold,Calculus,A discretization assumption that treats the input as constant between consecutive sample times.,Assume x(t) stays fixed during each interval of length Delta when deriving A_bar and B_bar.
+1261,Linear Recurrence,Deep Learning,A repeated state update where the next state is a linear function of previous state and current input.,h_t = A h_{t-1} + B x_t.
+1262,Linear Time-Invariant System,Linear Algebra,"LTI system, a linear dynamical system whose parameters do not change with time or input position.","The same A, B, and C matrices are used at every time step."
+1263,Time Invariance,Calculus,A property where shifting an input in time shifts the output correspondingly without changing system behavior.,An LTI filter responds the same way to a pattern whether it appears at step 10 or 100.
+1264,Input-Dependent Dynamics,Deep Learning,State-update behavior whose parameters change as a function of the current input.,Mamba can decide to remember one token and ignore another by changing its effective dynamics.
+1265,Selection Mechanism,Deep Learning,"Mamba's input-dependent mechanism for deciding which information should enter, persist in, or leave the recurrent state.",A token signaling a new topic can cause the model to overwrite some stored state.
+1266,Selective Scan,Deep Learning,Mamba's hardware-aware algorithm for evaluating input-dependent state-space recurrences efficiently across long sequences.,Selective scan computes the recurrent state sequence while minimizing expensive memory traffic.
+1267,Parallel Scan,Discrete Math,A family of algorithms that evaluates associative recurrences in parallel rather than strictly step by step.,Prefix-scan techniques can combine partial recurrence results across GPU blocks.
+1268,Gating,Deep Learning,Multiplicatively controlling how much information passes through a model component.,A gate near 0 suppresses a feature while a gate near 1 passes it through.
+1269,Hardware-Aware Algorithm,AI Infrastructure,An algorithm designed around real processor memory and compute behavior rather than only asymptotic operation counts.,Mamba's scan avoids repeatedly materializing large intermediate states in slow GPU memory.
+1270,GPU Memory Hierarchy,AI Infrastructure,The tiers of GPU storage with different capacities and access speeds.,Keeping temporary data in fast on-chip memory can be much faster than repeatedly reading HBM.
+1271,SRAM,AI Infrastructure,"Fast, relatively small on-chip memory used for caches and temporary working data.",A fused GPU kernel tries to keep intermediate state in SRAM when possible.
+1272,HBM,AI Infrastructure,"High Bandwidth Memory, large off-chip GPU memory with high throughput but higher access cost than on-chip memory.",Model parameters and large tensors commonly live in HBM.
+1273,Kernel Fusion,AI Infrastructure,Combining several GPU operations into one kernel to avoid writing and rereading intermediate tensors.,"Fuse discretization, recurrence updates, and output projection to reduce memory traffic."
+1274,Recomputation,AI Infrastructure,"Recalculating intermediate values instead of storing them, trading extra compute for lower memory use.","During backward pass, recompute a state sequence rather than saving every intermediate state."
+1275,State Expansion,Deep Learning,Using a larger internal state dimension than the input channel dimension to increase the memory capacity of an SSM.,A scalar input channel can maintain a 16-dimensional internal state.
+1276,Global Convolution,Deep Learning,"A convolution whose kernel spans a long or entire sequence, another way some linear SSMs can be computed.",An LTI state-space recurrence can be converted into a long convolution over the input sequence.
+1277,Gradient Flow,Deep Learning,The way derivative information propagates backward through a network during training.,Residual shortcuts provide shorter paths that improve gradient flow through deep networks.
+1278,1x1 Convolution,Computer Vision,"A convolution with a one-pixel spatial kernel, often used to change channel dimension cheaply.",A ResNet bottleneck uses a 1x1 convolution to reduce 256 channels to 64.
+1279,Multinomial Logistic Regression,Machine Learning,A multi-class generalization of logistic regression that uses softmax probabilities over classes.,"AlexNet's final layer can be viewed as multinomial logistic regression over 1,000 classes."
+1280,Top-1 Error,Computer Vision,The fraction of examples where the single highest-scoring predicted class is wrong.,"If the correct label is the model's second choice, that example counts as a top-1 error."
+1281,Top-5 Error,Computer Vision,The fraction of examples where the correct class is absent from the model's five highest-scoring predictions.,"If the true class ranks fourth, it is wrong for top-1 but correct for top-5."
+1282,Conditioning,Machine Learning,Providing information that changes a model's output distribution without necessarily changing its parameters.,Sora conditions video generation on a text description.
+1283,Conditional Generation,Deep Learning,"Generating samples from a distribution constrained by some input such as text, class labels, or actions.",Generate a video conditioned on 'a red car turning left'.
+1284,Factorized Attention,Deep Learning,Splitting a large attention operation into separate attention axes or stages to reduce cost.,A video model can apply spatial attention within frames and temporal attention across frames separately.
+1285,ST-ViViT,Computer Vision,A spatiotemporal video Transformer design that factorizes or organizes attention across space and time.,Genie's tokenizer uses a video-Transformer-style encoder to represent frame sequences.
+1286,Autoregressive Dynamics Model,Deep Learning,A dynamics model that predicts future latent tokens or states conditioned on preceding states and actions.,"Given previous video tokens and a latent action, predict the next frame's tokens."
+1287,Occlusion,Computer Vision,A visual condition where one object blocks another from view.,A world simulator should handle a ball disappearing behind a wall and later reappearing.
+1288,Object Permanence,Computer Vision,The concept that an object can continue to exist even when it is temporarily not visible.,A video model shows object permanence if a hidden car reappears consistently after passing behind a building.
+1289,3D Consistency,Computer Vision,Maintaining coherent three-dimensional geometry as viewpoint or camera position changes.,"When the camera circles a chair, its shape and spatial placement should remain consistent."
+1290,Temporal Coherence,Computer Vision,"Maintaining consistent identities, geometry, and motion across successive time steps or video frames.",A person's clothing should not randomly change color between adjacent frames.
+1291,Reparameterization,Deep Learning,Rewriting a random sample as a deterministic function of parameters plus parameter-independent noise so gradients can pass through the sampling procedure.,"A Gaussian sample can be written z = mu + sigma times epsilon with epsilon drawn from N(0,1)."
+1292,Reparameterization Trick,Deep Learning,The VAE technique of using reparameterization to make stochastic latent sampling compatible with backpropagation.,"Sample epsilon from N(0,1), then compute z = mu + sigma times epsilon."
+1293,One-Hot Target,Machine Learning,A classification target represented by a one-hot vector.,"Without label smoothing, the correct class target is 1 and every other class target is 0."
+1294,Decoder-Only Transformer,NLP & LLMs,A Transformer architecture using causal self-attention to generate sequences without a separate encoder stack.,GPT-3 is a decoder-only Transformer.
+1295,Encoder-Only Transformer,NLP & LLMs,A Transformer architecture focused on producing contextual representations rather than autoregressive generation.,BERT is an encoder-only Transformer.
+1296,Bidirectional Transformer,NLP & LLMs,A Transformer encoder in which a token representation can use context from both earlier and later positions.,BERT can use the words on both sides of a masked word.
+1297,Attention Matrix,Deep Learning,The matrix of pairwise attention weights or scores between sequence positions.,"For n tokens, full self-attention forms an n by n score matrix."
+1298,Quadratic Memory Cost,Deep Learning,Memory usage that grows with the square of sequence length.,"Doubling tokens from 1,000 to 2,000 makes an n by n attention matrix four times larger."
+1299,Projection Shortcut,Deep Learning,A residual shortcut that uses a learned projection to match dimensions before addition.,"When a ResNet block doubles channels, a 1x1 projection can transform x before adding it to F(x)."
+1300,Identity Shortcut,Deep Learning,A residual shortcut that passes the input through unchanged.,"If input and output dimensions match, ResNet can add x directly."
+1301,Model Capacity,Machine Learning,"The amount and complexity of functions a model can represent, influenced by parameter count and architecture.",A wider or deeper network usually has more capacity than a tiny one.
+1302,Discrete Codebook,Deep Learning,A finite set of learned latent vectors used to turn continuous encoder outputs into discrete symbols.,"A video tokenizer chooses the nearest of 1,024 code vectors."
+1303,Discrete Token,Deep Learning,A token represented by an integer choice from a finite vocabulary or codebook.,A VQ tokenizer may encode a video patch as token ID 73.
+1304,Latent Dynamics,Deep Learning,The evolution of a learned hidden representation over time instead of raw observations.,World Models predicts how latent z changes after each action.
+1305,Discounted Return,Reinforcement Learning,The sum of future rewards weighted by successive powers of a discount factor.,G_t = r_t + gamma r_{t+1} + gamma^2 r_{t+2} + ...
+1306,Planning,AI General,Searching over possible future actions using predictions of their consequences.,Simulate several action sequences in a world model and choose the one with lowest predicted cost.
+1307,Model Predictive Control,Reinforcement Learning,"A control method that repeatedly plans over a finite future horizon, executes an initial action, then replans from the new state.","A robot predicts the next two seconds, takes one step, observes again, and replans."
+1308,Planning Horizon,AI General,The number of future steps considered by a planner.,A horizon of 20 means candidate action sequences are evaluated 20 steps ahead.
+1309,Differentiable Planning,AI General,Planning through a model using gradients of predicted cost with respect to actions or latent variables.,Backpropagate through a learned dynamics model to adjust an action sequence.
+1310,Codebook Collapse,Deep Learning,A failure mode in vector-quantized models where only a small subset of codebook entries are used.,"A 1,024-entry codebook is effectively wasted if the tokenizer uses only 12 entries."
+1311,Teacher Forcing,NLP & LLMs,Training a sequence model using the true previous target as input rather than its own previous prediction.,"During next-token training, the model sees the actual prefix from the dataset."
+1312,Exposure Bias,NLP & LLMs,A mismatch where a sequence model trains on true histories but at generation time must condition on its own possibly incorrect outputs.,One bad generated token can move the model into contexts it never saw during teacher-forced training.

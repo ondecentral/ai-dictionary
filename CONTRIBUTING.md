@@ -5,7 +5,7 @@ The dictionary is plain JavaScript in `data/`:
 - `data/ai.js`: AI/ML terms (`category: "ai"` is added automatically)
 - `data/math.js`: math terms (`category: "math"`)
 - `data/symbols.js`: notation
-- `data/glossary.csv`: one-line glossary definitions (`id,term,category,definition`), with extra names in `data/glossary-aliases.js`
+- `data/glossary.csv`: one-line glossary definitions (`id,term,category,definition,example`; `example` is optional), with extra names in `data/glossary-aliases.js`
 
 To make a glossary term richer (add a formula or JS snippet), add a curated entry with the same `term` to `ai.js` or `math.js`. It takes precedence over the CSV row automatically.
 

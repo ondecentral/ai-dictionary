@@ -100,19 +100,19 @@ findSymbols("∇")[0].meaning;              // "Gradient. ∇_θ L = ..."
 
 ## What's covered
 
-About **1,090 terms** across 24 subjects, plus 90 notation symbols.
+About **1,320 terms** across 24 subjects, plus 90 notation symbols.
 
 - **Curated entries** (`data/ai.js`, `data/math.js`, ~140 terms): the concepts papers use most (transformer, attention, softmax, gradient descent, KL divergence, LoRA, RLHF…). Each has a full explanation, the formula, and a JS snippet.
-- **Glossary** (`data/glossary.csv`, 1,072 rows): one-sentence definitions across machine learning, deep learning, NLP & LLMs, RL, AI agents, safety and ethics, MLOps, and math from calculus and statistics to graph theory, number theory and topology.
+- **Glossary** (`data/glossary.csv`, 1,311 rows): one-sentence definitions, many with a short example, across machine learning, deep learning, NLP & LLMs, RL, AI agents, safety and ethics, MLOps, and math from calculus and statistics to graph theory, number theory and topology.
 - **Notation** (`data/symbols.js`): Greek letters and their usual meanings, ∇ ∂ Σ 𝔼 ~ ‖x‖ ⊙ and others, plus paper conventions like x⁽ⁱ⁾ vs xᵢ, all with JS equivalents.
 
 Browse with `aidict list`, filter by subject with `aidict list -t "Linear Algebra"`, and see every subject and tag with `aidict tags`.
 
 ### Updating the glossary
 
-Replace `data/glossary.csv` with a new export that has the same columns: `id,term,category,definition`. The `category` column is the subject (e.g. `Linear Algebra`). The file is loaded at startup and merged with the curated entries:
+Replace `data/glossary.csv` with a new export that has the same columns: `id,term,category,definition,example`. The `category` column is the subject (e.g. `Linear Algebra`). `example` is optional and can be left off a row. The file is loaded at startup and merged with the curated entries:
 
-- If a CSV term has the same name as a curated entry, they merge: the curated explanation, formula and JS stay, and the CSV subject is added as a tag.
+- If a CSV term has the same name as a curated entry, they merge: the curated explanation, formula and JS stay, the CSV subject is added as a tag, and the CSV example is used if the curated entry has none.
 - If a CSV term is only an *alias* of a curated entry (e.g. `AdamW` under Adam), it becomes its own entry, and the two are linked as related.
 - Spelled-out acronyms merge into their acronym entry (`Direct Preference Optimization` → `DPO`).
 - To add acronyms or other names for CSV terms, edit `data/glossary-aliases.js`. The CSV has no alias column.
