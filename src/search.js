@@ -1,14 +1,7 @@
 import { terms, symbols } from "./data.js";
+import { normalize } from "./text.js";
 
-/** Lowercase, strip accents/punctuation, treat - and _ as spaces. */
-export function normalize(s) {
-  return s
-    .normalize("NFKD")
-    .replace(/[̀-ͯ]/g, "")
-    .toLowerCase()
-    .replace(/[^\p{L}\p{N}]+/gu, " ")
-    .trim();
-}
+export { normalize };
 
 /** Cheap English singular forms of the last word, most specific first. */
 export function singulars(phrase) {
@@ -96,7 +89,7 @@ export function lookup(query, opts = {}) {
   const results = search(query, { limit: 6, ...opts });
   const [top, ...rest] = results;
   if (top && top.score >= 65) {
-    return { entry: top.entry, suggestions: rest.filter(r => r.score >= 50).map(r => r.entry) };
+    return { entry: top.entry, suggestions: rest.filter(r => r.score >= 60).map(r => r.entry) };
   }
   return { entry: null, suggestions: results.map(r => r.entry) };
 }
@@ -110,6 +103,8 @@ export function findSymbols(query) {
       let score = 0;
       // Match the glyph itself (but don't let "a" match every symbol containing an "a").
       if (s.symbol === raw || (raw && !/^[a-z ]+$/i.test(raw) && s.symbol.includes(raw))) score = 100;
+      // Glyphs a symbol stands for in formulas, e.g. "ᵢ" -> subscript, "²" -> power.
+      else if (raw && !/^[a-z0-9 ]+$/i.test(raw) && (s.detect ?? []).some(d => (d instanceof RegExp ? new RegExp(d.source, d.flags.replace("g", "")).test(raw) : raw.includes(d)))) score = 95;
       for (const n of s.names) {
         const nn = normalize(n);
         if (n === raw || (nn && nn === q)) score = Math.max(score, 90);

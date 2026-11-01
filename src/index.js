@@ -2,3 +2,4 @@
 export { terms, symbols, getTerm, allTags, CATEGORIES } from "./data.js";
 export { search, lookup, findSymbols, normalize } from "./search.js";
 export { scan } from "./scan.js";
+export { explainFormula } from "./notation.js";

@@ -12,6 +12,13 @@ export default [
     definition:
       "Introduced in \"Attention Is All You Need\" (Vaswani et al., 2017). Each layer applies self-attention (every token looks at every other token) followed by a small feed-forward network, with residual connections and layer normalization around both. Because attention processes all positions in parallel, transformers train far faster on GPUs than recurrent networks. GPT-style models use only the decoder stack; BERT-style models use only the encoder.",
     formula: "x = x + Attention(LayerNorm(x))\nx = x + FFN(LayerNorm(x))",
+    where: [
+      ["x", "the sequence of token vectors flowing through the block"],
+      ["Attention", "multi-head self-attention sublayer"],
+      ["LayerNorm", "layer normalization applied before each sublayer"],
+      ["FFN", "position-wise feed-forward network sublayer"],
+      ["x = x +", "residual connection: add the sublayer output back onto x"],
+    ],
     js: `// One pre-norm transformer block (shapes: x is [seqLen][dModel])
 function transformerBlock(x, p) {
   x = add(x, multiHeadAttention(layerNorm(x), p.attn));
@@ -29,6 +36,13 @@ function transformerBlock(x, p) {
     definition:
       "LLMs are pretrained on trillions of tokens of text with a simple next-token objective, then fine-tuned (SFT, RLHF) to follow instructions. \"Large\" typically means billions of parameters. Despite the simple objective, at scale they acquire broad knowledge and abilities like translation, coding and in-context learning.",
     formula: "p(text) = Π_t p(tokenₜ | tokens<ₜ)",
+    where: [
+      ["p(text)", "probability the model assigns to the whole text"],
+      ["p", "probability under the model"],
+      ["tokenₜ", "the token at position t"],
+      ["tokens<ₜ", "all tokens before position t (the context so far)"],
+      ["Π_t", "multiply the per-token probabilities over every position t"],
+    ],
     js: `// Everything an LLM does, conceptually:
 let ids = tokenize(prompt);
 while (!done(ids)) ids.push(sample(softmax(model(ids).at(-1))));
@@ -44,6 +58,15 @@ return detokenize(ids);`,
     definition:
       "Each position produces a query (Q), key (K) and value (V) vector. Scores are the dot products of a query with every key, scaled by √dₖ to keep them from growing too large, then turned into weights with softmax. The output is the weighted sum of the values. Think of it as a soft, differentiable hash-map lookup: instead of returning the one value whose key matches exactly, it returns a blend of all values weighted by similarity.",
     formula: "Attention(Q, K, V) = softmax(QKᵀ / √dₖ) · V",
+    where: [
+      ["Attention(Q, K, V)", "attention output for queries Q, keys K and values V"],
+      ["Q", "queries: what each position is looking for"],
+      ["K", "keys: what each position offers to be matched against"],
+      ["V", "values: the content that gets mixed together"],
+      ["QKᵀ", "every query dotted with every key = similarity scores"],
+      ["dₖ", "dimension of the key vectors; √dₖ keeps scores from growing too large"],
+      ["softmax", "turns each row of scores into weights that sum to 1"],
+    ],
     js: `// Soft dictionary lookup for a single query vector q
 function attention(q, keys, values) {
   const d = q.length;
@@ -63,6 +86,18 @@ function attention(q, keys, values) {
     definition:
       "In self-attention each token in a sequence attends to the other tokens in that same sequence, letting the model mix in context (e.g. resolving what \"it\" refers to). Q, K and V are produced by multiplying the same input X by three learned weight matrices. Cost is O(n²) in sequence length because every token is compared with every other token. Contrast with cross-attention, where queries come from one sequence and keys/values from another.",
     formula: "Q = XW_Q,  K = XW_K,  V = XW_V\nout = softmax(QKᵀ / √dₖ) V",
+    where: [
+      ["X", "input sequence, one row per token"],
+      ["W_Q", "learned weight matrix that produces queries (likewise W_K, W_V)"],
+      ["W_K", "learned weight matrix that produces keys"],
+      ["W_V", "learned weight matrix that produces values"],
+      ["Q", "queries"],
+      ["K", "keys"],
+      ["V", "values"],
+      ["dₖ", "key dimension"],
+      ["softmax", "normalizes scores into attention weights"],
+      ["out", "the attended output, one row per token"],
+    ],
     js: `const Q = matmul(X, Wq), K = matmul(X, Wk), V = matmul(X, Wv);
 const out = matmul(softmaxRows(scale(matmul(Q, transpose(K)), 1 / Math.sqrt(dk))), V);`,
     related: ["attention", "multi-head-attention", "transformer", "matrix-multiplication"],
@@ -76,6 +111,19 @@ const out = matmul(softmaxRows(scale(matmul(Q, transpose(K)), 1 / Math.sqrt(dk))
     definition:
       "Instead of one attention over the full model dimension, the input is projected into h lower-dimensional \"heads\" (d_model / h each). Each head can specialise in a different relationship (syntax, coreference, position). Outputs are concatenated and projected back with W_O. Variants such as multi-query attention (MQA) and grouped-query attention (GQA) share keys/values across heads to shrink the KV cache.",
     formula: "MultiHead(X) = Concat(head₁, …, head_h) W_O\nheadᵢ = Attention(XW_Qⁱ, XW_Kⁱ, XW_Vⁱ)",
+    where: [
+      ["MultiHead(X)", "multi-head attention applied to input X"],
+      ["headᵢ", "output of the i-th attention head"],
+      ["head₁", "the first head"],
+      ["head_h", "the last head; h is the number of heads"],
+      ["Concat", "join the heads' outputs side by side"],
+      ["W_O", "learned output projection back to model dimension"],
+      ["Attention", "scaled dot-product attention"],
+      ["X", "input sequence"],
+      ["W_Qⁱ", "head i's query projection (likewise W_Kⁱ, W_Vⁱ); ⁱ is a head index, not a power"],
+      ["W_Kⁱ", "head i's key projection"],
+      ["W_Vⁱ", "head i's value projection"],
+    ],
     js: `const heads = range(h).map(i =>
   selfAttention(X, Wq[i], Wk[i], Wv[i]));
 const out = matmul(concatColumns(heads), Wo);`,
@@ -90,6 +138,13 @@ const out = matmul(concatColumns(heads), Wo);`,
     definition:
       "Autoregressive models must predict token t using only tokens < t. The causal mask sets attention scores for future positions to −∞ before the softmax, so their weights become exactly 0. The mask is a lower-triangular matrix. Padding masks work the same way but hide padding tokens instead.",
     formula: "scoresᵢⱼ = −∞  if j > i",
+    where: [
+      ["scoresᵢⱼ", "attention score from query position i to key position j"],
+      ["i", "the position doing the attending"],
+      ["j", "the position being attended to"],
+      ["−∞", "negative infinity; softmax turns it into a weight of exactly 0"],
+      ["if j > i", "only for positions in the future of i"],
+    ],
     js: `for (let i = 0; i < n; i++)
   for (let j = i + 1; j < n; j++)
     scores[i][j] = -Infinity;   // softmax turns this into 0`,
@@ -130,6 +185,15 @@ function step(xNew) {
     definition:
       "Attention treats its input as a set, so \"dog bites man\" and \"man bites dog\" would look identical. Positional encodings add (or rotate in) a position-dependent vector to each token embedding. The original transformer used fixed sine/cosine waves of different frequencies; later models use learned embeddings, RoPE or ALiBi.",
     formula: "PE(pos, 2i) = sin(pos / 10000^(2i/d))\nPE(pos, 2i+1) = cos(pos / 10000^(2i/d))",
+    where: [
+      ["PE", "the positional encoding vector"],
+      ["pos", "token position in the sequence (0, 1, 2, …)"],
+      ["2i", "even dimension index; 2i+1 is the odd one next to it"],
+      ["d", "model (embedding) dimension"],
+      ["10000", "base constant that sets the range of wavelengths"],
+      ["sin", "sine wave for even dimensions"],
+      ["cos", "cosine wave for odd dimensions"],
+    ],
     js: `const pe = (pos, d) => Array.from({ length: d }, (_, k) => {
   const angle = pos / 10000 ** ((2 * Math.floor(k / 2)) / d);
   return k % 2 === 0 ? Math.sin(angle) : Math.cos(angle);
@@ -145,6 +209,13 @@ function step(xNew) {
     definition:
       "RoPE (Su et al., 2021) treats each pair of dimensions in Q and K as a 2D point and rotates it by pos·θᵢ. Because the dot product of two rotated vectors depends only on the difference of their angles, attention scores naturally depend on relative position. Used by LLaMA, Mistral and most modern open LLMs; context-extension tricks (NTK scaling, YaRN) tweak θ.",
     formula: "[x₁', x₂'] = [x₁cos(mθ) − x₂sin(mθ), x₁sin(mθ) + x₂cos(mθ)]",
+    where: [
+      ["x₁', x₂'", "the pair of dimensions after rotation"],
+      ["x₁, x₂", "a pair of adjacent dimensions of a query or key vector"],
+      ["m", "token position"],
+      ["θ", "rotation frequency for this pair of dimensions"],
+      ["cos, sin", "cosine and sine: the 2D rotation formula"],
+    ],
     js: `function rope(x, pos, base = 10000) {
   const out = [...x];
   for (let i = 0; i < x.length; i += 2) {
@@ -165,6 +236,15 @@ function step(xNew) {
     definition:
       "The simplest neural network: y = W₂·σ(W₁x + b₁) + b₂. In a transformer the FFN sits after attention and typically expands the hidden size 4× before projecting back down. A large share of an LLM's parameters (and much of its stored \"knowledge\") lives in these layers. Modern variants use gated activations like SwiGLU.",
     formula: "FFN(x) = W₂ · σ(W₁x + b₁) + b₂",
+    where: [
+      ["FFN(x)", "the feed-forward network applied to x"],
+      ["x", "input vector for one token"],
+      ["W₁", "first weight matrix (expands, often 4× wider)"],
+      ["b₁", "first bias vector"],
+      ["σ", "activation function (ReLU, GELU, …), not standard deviation here"],
+      ["W₂", "second weight matrix (projects back down)"],
+      ["b₂", "second bias vector"],
+    ],
     js: `const ffn = (x, { W1, b1, W2, b2 }) =>
   add(matvec(W2, matvec(W1, x).map((v, i) => relu(v + b1[i]))), b2);`,
     related: ["activation-function", "transformer", "parameters"],
@@ -178,6 +258,11 @@ function step(xNew) {
     definition:
       "Popularised by ResNet (He et al., 2015). Because the identity path is always available, each layer only has to learn a small correction, and gradients can flow straight back through the addition, mitigating vanishing gradients. In transformers the running sum is often called the \"residual stream\".",
     formula: "y = x + f(x)",
+    where: [
+      ["x", "the input to the layer"],
+      ["f(x)", "what the layer computes"],
+      ["y", "the output: input plus the layer's correction"],
+    ],
     js: `const residual = (x, f) => add(x, f(x));`,
     related: ["vanishing-gradient", "transformer", "layer-normalization"],
   },
@@ -190,6 +275,15 @@ function step(xNew) {
     definition:
       "Normalising activations keeps their magnitudes stable across layers, making training faster and more reliable. LayerNorm normalises across the features of a single example (unlike batch norm, which normalises across the batch), so it works the same at any batch size. RMSNorm, used in LLaMA, skips mean-centering and only divides by the root-mean-square.",
     formula: "LN(x) = γ ⊙ (x − μ) / √(σ² + ε) + β",
+    where: [
+      ["LN(x)", "layer norm of vector x"],
+      ["x", "input vector (one token's features)"],
+      ["μ", "mean of x's elements"],
+      ["σ²", "variance of x's elements"],
+      ["ε", "tiny constant (e.g. 1e-5) to avoid dividing by zero"],
+      ["γ", "learned per-feature scale"],
+      ["β", "learned per-feature shift"],
+    ],
     js: `function layerNorm(x, gamma, beta, eps = 1e-5) {
   const mu = mean(x);
   const v = mean(x.map(xi => (xi - mu) ** 2));
@@ -206,6 +300,16 @@ function step(xNew) {
     definition:
       "For every feature, BatchNorm subtracts the batch mean and divides by the batch standard deviation, then applies learned γ and β. At inference it uses running averages collected during training. Very common in CNNs; transformers usually prefer layer normalization because sequence lengths and batch sizes vary.",
     formula: "x̂ = (x − μ_B) / √(σ²_B + ε),  y = γx̂ + β",
+    where: [
+      ["x̂", "normalized activation"],
+      ["x", "an activation value"],
+      ["μ_B", "mean of this feature over the mini-batch B"],
+      ["σ²_B", "variance of this feature over the mini-batch B"],
+      ["ε", "tiny constant to avoid dividing by zero"],
+      ["γ", "learned scale"],
+      ["β", "learned shift"],
+      ["y", "the output"],
+    ],
     related: ["layer-normalization", "batch-size", "cnn"],
   },
   {
@@ -227,6 +331,13 @@ function step(xNew) {
     definition:
       "A convolution applies the same small kernel (e.g. 3×3) at every location, so the network has few parameters and is translation-equivariant: a cat detector works anywhere in the image. Stacking layers builds up from edges to textures to objects. Dominated computer vision before Vision Transformers (ViT).",
     formula: "(I * K)(i, j) = Σₘ Σₙ I(i+m, j+n) · K(m, n)",
+    where: [
+      ["I", "input image (a grid of numbers)"],
+      ["K", "kernel / filter (a small grid of learned weights)"],
+      ["*", "convolution (not multiplication)"],
+      ["i, j", "output pixel position"],
+      ["m, n", "offsets within the kernel"],
+    ],
     js: `function conv2d(img, k) {
   const out = [];
   for (let i = 0; i + k.length <= img.length; i++) {
@@ -251,6 +362,15 @@ function step(xNew) {
     definition:
       "An RNN applies the same function at every step: h_t = f(h_{t−1}, x_t). This is literally Array.prototype.reduce with a learned reducer. RNNs are inherently sequential (slow to train on GPUs) and struggle with long-range dependencies due to vanishing gradients, which is why transformers largely replaced them. State-space models (Mamba) revive the idea with better parallelism.",
     formula: "hₜ = tanh(W_h hₜ₋₁ + W_x xₜ + b)",
+    where: [
+      ["hₜ", "hidden state at step t (the RNN's memory)"],
+      ["hₜ₋₁", "hidden state from the previous step"],
+      ["xₜ", "input at step t"],
+      ["W_h", "weights applied to the previous state"],
+      ["W_x", "weights applied to the input"],
+      ["b", "bias vector"],
+      ["tanh", "squashes values into (−1, 1)"],
+    ],
     js: `const finalState = inputs.reduce(
   (h, x) => add(matvec(Wh, h), matvec(Wx, x)).map(Math.tanh),
   zeros(hiddenSize));`,
@@ -275,6 +395,15 @@ function step(xNew) {
     definition:
       "The generator maps random noise to samples; the discriminator outputs the probability a sample is real. They play a minimax game until the generator's samples are indistinguishable from real data. GANs produce sharp images but are notoriously unstable to train (mode collapse). Largely superseded by diffusion models for image generation.",
     formula: "min_G max_D 𝔼[log D(x)] + 𝔼[log(1 − D(G(z)))]",
+    where: [
+      ["G", "generator network: turns noise into fake samples"],
+      ["D", "discriminator: outputs probability its input is real"],
+      ["min_G max_D", "G minimizes while D maximizes the same objective (a game)"],
+      ["x", "a real data sample"],
+      ["z", "random noise input to the generator"],
+      ["D(x)", "discriminator's belief that real x is real"],
+      ["D(G(z))", "discriminator's belief that a fake is real"],
+    ],
     related: ["diffusion-model", "vae", "latent-space"],
   },
   {
@@ -286,6 +415,15 @@ function step(xNew) {
     definition:
       "An autoencoder compresses input to a small latent vector and reconstructs it. A VAE makes the latent a distribution (usually Gaussian) and trains with the ELBO: reconstruction quality minus a KL-divergence penalty that keeps latents close to a standard normal. That regularity lets you sample new latents and decode them. Stable Diffusion runs diffusion inside a VAE's latent space.",
     formula: "ELBO = 𝔼_q[log p(x|z)] − KL(q(z|x) ‖ p(z))",
+    where: [
+      ["ELBO", "evidence lower bound: the quantity a VAE maximizes"],
+      ["x", "a data example"],
+      ["z", "latent code"],
+      ["q(z|x)", "encoder: distribution over latents given the input"],
+      ["p(x|z)", "decoder: likelihood of reconstructing x from z"],
+      ["p(z)", "prior over latents, usually 𝒩(0, I)"],
+      ["𝔼_q", "average over latents sampled from the encoder q"],
+    ],
     related: ["latent-space", "kl-divergence", "gaussian", "diffusion-model"],
   },
   {
@@ -297,6 +435,13 @@ function step(xNew) {
     definition:
       "Training: take real data, add Gaussian noise over many steps until it is pure noise, and train a network to predict the noise at each step. Generation: start from random noise and repeatedly denoise. Powers Stable Diffusion, DALL·E 3, Midjourney and many video models. Guidance (e.g. classifier-free guidance) steers samples toward a text prompt.",
     formula: "xₜ = √ᾱₜ x₀ + √(1 − ᾱₜ) ε,   ε ~ 𝒩(0, I)",
+    where: [
+      ["xₜ", "the noised sample at step t"],
+      ["x₀", "the original clean data"],
+      ["ᾱₜ", "\"alpha-bar\": fraction of signal left at step t (shrinks toward 0)"],
+      ["ε", "the Gaussian noise that was added"],
+      ["I", "identity matrix: independent noise in every dimension"],
+    ],
     related: ["gaussian", "vae", "gan", "latent-space"],
   },
   {
@@ -380,6 +525,11 @@ const score = cosineSimilarity(await embedText(query), await embedText(doc));`,
     definition:
       "An LLM's final layer outputs one logit per vocabulary token. Logits can be any real number; only their differences matter. Softmax converts them to probabilities. (Strictly, a logit is the log-odds log(p/(1−p)), the inverse of sigmoid, but in ML the word is used loosely for any pre-softmax score.)",
     formula: "p = softmax(logits)",
+    where: [
+      ["p", "output probabilities"],
+      ["logits", "raw scores from the model's last layer"],
+      ["softmax", "converts scores into probabilities"],
+    ],
     js: `const logits = [2.0, 1.0, 0.1];
 const probs = softmax(logits); // [0.659, 0.242, 0.099]`,
     related: ["softmax", "temperature", "sigmoid", "cross-entropy"],
@@ -393,6 +543,12 @@ const probs = softmax(logits); // [0.659, 0.242, 0.099]`,
     definition:
       "T < 1 sharpens the distribution toward the top token; T → 0 approaches greedy decoding. T > 1 flattens it, making unlikely tokens more probable and output more creative (and error-prone). T = 1 leaves the model's distribution unchanged. Also used in distillation and contrastive learning to soften targets.",
     formula: "pᵢ = exp(zᵢ / T) / Σⱼ exp(zⱼ / T)",
+    where: [
+      ["pᵢ", "probability of token i"],
+      ["zᵢ", "logit (raw score) of token i"],
+      ["zⱼ", "logit of token j, summed over every token"],
+      ["T", "temperature: < 1 sharper, > 1 flatter"],
+    ],
     js: `const withTemperature = (logits, T) => softmax(logits.map(z => z / T));`,
     related: ["softmax", "logits", "top-p-sampling", "greedy-decoding"],
   },
@@ -468,6 +624,13 @@ const probs = softmax(logits); // [0.659, 0.242, 0.099]`,
     definition:
       "An autoregressive model factorises the probability of a sequence with the chain rule of probability: p(x) = Π p(xₜ | x<ₜ). GPT-style LLMs are trained on next-token prediction and generate by appending their own outputs to the input in a loop.",
     formula: "p(x₁…x_n) = Π_t p(xₜ | x₁…xₜ₋₁)",
+    where: [
+      ["p(x₁…x_n)", "probability of the whole sequence of n items"],
+      ["p", "probability under the model"],
+      ["xₜ", "the item at position t"],
+      ["x₁…xₜ₋₁", "everything generated before position t"],
+      ["Π_t", "product over positions t"],
+    ],
     js: `let ids = tokenizer.encode(prompt);
 while (ids.length < maxLen) {
   const next = sample(model(ids).at(-1));  // logits for last position
@@ -495,6 +658,13 @@ while (ids.length < maxLen) {
     definition:
       "Perplexity is the exponential of the average negative log-likelihood per token. A perplexity of 10 means the model is, on average, as uncertain as if choosing uniformly among 10 tokens. Useful for comparing models on the same tokenizer and data; not directly comparable across tokenizers.",
     formula: "PPL = exp(−(1/N) Σ log p(xᵢ | x<ᵢ))",
+    where: [
+      ["PPL", "perplexity"],
+      ["N", "number of tokens"],
+      ["xᵢ", "the i-th token"],
+      ["x<ᵢ", "all tokens before i"],
+      ["p(xᵢ | x<ᵢ)", "model's probability for the actual next token"],
+    ],
     js: `const perplexity = tokenProbs =>
   Math.exp(-tokenProbs.reduce((s, p) => s + Math.log(p), 0) / tokenProbs.length);`,
     related: ["cross-entropy", "likelihood", "entropy"],
@@ -510,6 +680,12 @@ while (ids.length < maxLen) {
     definition:
       "The loss compares predictions to targets: mean squared error for regression, cross-entropy for classification and language modelling. Training repeatedly computes the loss, its gradient with respect to every parameter, and nudges parameters downhill. \"Objective\" is the general term (you may maximise a reward instead of minimising a loss).",
     formula: "MSE = (1/n) Σ (ŷᵢ − yᵢ)²",
+    where: [
+      ["MSE", "mean squared error"],
+      ["n", "number of examples"],
+      ["ŷᵢ", "model's prediction for example i"],
+      ["yᵢ", "true target for example i"],
+    ],
     js: `const mse = (pred, target) =>
   pred.reduce((s, p, i) => s + (p - target[i]) ** 2, 0) / pred.length;`,
     related: ["cross-entropy", "gradient-descent", "backpropagation", "regularization"],
@@ -523,6 +699,12 @@ while (ids.length < maxLen) {
     definition:
       "The gradient points uphill, so subtracting a small multiple of it (the learning rate η) lowers the loss. Repeat until it stops improving. Full-batch gradient descent uses the entire dataset per step; in practice deep learning uses stochastic or mini-batch variants (SGD, Adam).",
     formula: "θ ← θ − η ∇_θ L(θ)",
+    where: [
+      ["θ", "all model parameters"],
+      ["η", "learning rate (step size)"],
+      ["∇_θ L(θ)", "gradient of the loss L with respect to the parameters"],
+      ["L", "loss function"],
+    ],
     js: `for (let step = 0; step < steps; step++) {
   const g = grad(loss, params);
   params = params.map((p, i) => p - lr * g[i]);
@@ -538,6 +720,13 @@ while (ids.length < maxLen) {
     definition:
       "Each mini-batch gives a noisy but cheap estimate of the true gradient. The noise even helps escape poor regions. Momentum adds a running average of past gradients (like a ball rolling downhill) to smooth updates and speed progress along consistent directions.",
     formula: "v ← βv + ∇L_batch(θ)\nθ ← θ − ηv",
+    where: [
+      ["v", "velocity: running average of gradients (momentum)"],
+      ["β", "momentum coefficient, e.g. 0.9"],
+      ["∇L_batch(θ)", "gradient of the loss on the current mini-batch"],
+      ["θ", "model parameters"],
+      ["η", "learning rate"],
+    ],
     js: `v = v.map((vi, i) => beta * vi + g[i]);
 params = params.map((p, i) => p - lr * v[i]);`,
     related: ["gradient-descent", "adam", "batch-size", "stochastic"],
@@ -551,6 +740,17 @@ params = params.map((p, i) => p - lr * v[i]);`,
     definition:
       "Adam (Kingma & Ba, 2014) tracks a running mean of gradients (m, momentum) and of squared gradients (v), and divides the step by √v so parameters with large, noisy gradients take smaller steps. Bias correction fixes the zero initialisation of m and v. AdamW decouples weight decay from the gradient update and is the standard for training transformers.",
     formula: "m ← β₁m + (1−β₁)g\nv ← β₂v + (1−β₂)g²\nθ ← θ − η · m̂ / (√v̂ + ε)",
+    where: [
+      ["m", "first moment: running average of gradients"],
+      ["v", "second moment: running average of squared gradients"],
+      ["g", "current gradient"],
+      ["β₁", "decay rate for m, usually 0.9"],
+      ["β₂", "decay rate for v, usually 0.999"],
+      ["m̂, v̂", "bias-corrected m and v (the hat marks a corrected estimate)"],
+      ["θ", "model parameters"],
+      ["η", "learning rate"],
+      ["ε", "tiny constant to avoid dividing by zero"],
+    ],
     js: `function adamStep(p, g, s, t, { lr = 1e-3, b1 = 0.9, b2 = 0.999, eps = 1e-8 } = {}) {
   s.m = s.m.map((m, i) => b1 * m + (1 - b1) * g[i]);
   s.v = s.v.map((v, i) => b2 * v + (1 - b2) * g[i] ** 2);
@@ -570,6 +770,11 @@ params = params.map((p, i) => p - lr * v[i]);`,
     definition:
       "Too high and training diverges (loss explodes to NaN); too low and it crawls or gets stuck. Usually written η or α. Most training runs use a schedule: linear warmup, then cosine or linear decay toward zero.",
     formula: "θ ← θ − η ∇L",
+    where: [
+      ["θ", "model parameters"],
+      ["η", "the learning rate"],
+      ["∇L", "gradient of the loss"],
+    ],
     js: `// Cosine decay after warmup
 const lrAt = (step, total, maxLr, warm) =>
   step < warm ? maxLr * step / warm
@@ -595,6 +800,13 @@ const lrAt = (step, total, maxLr, warm) =>
     definition:
       "The forward pass computes outputs and caches intermediate values. The backward pass walks the computation graph in reverse, multiplying local derivatives (chain rule) to get ∂L/∂θ for every parameter in roughly the cost of one more forward pass. Frameworks (PyTorch, JAX, TensorFlow.js) do this automatically — \"autograd\".",
     formula: "∂L/∂x = ∂L/∂y · ∂y/∂x",
+    where: [
+      ["L", "the loss"],
+      ["x", "an earlier value in the network"],
+      ["y", "a later value that depends on x"],
+      ["∂L/∂y", "gradient arriving from later layers"],
+      ["∂y/∂x", "local derivative of this operation"],
+    ],
     js: `// Micro-autograd: y = a * b, then backprop
 const a = { v: 2, g: 0 }, b = { v: 3, g: 0 };
 const y = { v: a.v * b.v, g: 1 };   // dL/dy = 1
@@ -623,6 +835,11 @@ b.g += y.g * a.v;                  // dy/db = a  -> 2`,
     definition:
       "If ‖g‖ exceeds a threshold c, rescale g to have norm exactly c (direction is preserved). A cheap safety net against exploding gradients and loss spikes; common values are 0.5–1.0.",
     formula: "g ← g · min(1, c / ‖g‖)",
+    where: [
+      ["g", "the gradient vector"],
+      ["c", "maximum allowed norm (clip threshold)"],
+      ["‖g‖", "length (L2 norm) of the gradient"],
+    ],
     js: `const n = Math.hypot(...g);
 if (n > maxNorm) g = g.map(x => x * maxNorm / n);`,
     related: ["vanishing-gradient", "norm"],
@@ -679,6 +896,12 @@ if (n > maxNorm) g = g.map(x => x * maxNorm / n);`,
     definition:
       "L2 regularization adds λ‖θ‖² to the loss (pushing weights toward zero); L1 adds λ‖θ‖₁ (pushing many to exactly zero → sparsity). Dropout, data augmentation and early stopping are also regularizers.",
     formula: "L_total = L_data + λ ‖θ‖²",
+    where: [
+      ["L_total", "the loss actually minimized"],
+      ["L_data", "the ordinary prediction loss"],
+      ["λ", "regularization strength"],
+      ["‖θ‖²", "squared L2 norm of the parameters: sum of squared weights"],
+    ],
     js: `const l2 = params.reduce((s, w) => s + w * w, 0);
 const total = dataLoss + lambda * l2;`,
     related: ["overfitting", "weight-decay", "dropout", "norm"],
@@ -704,6 +927,12 @@ const total = dataLoss + lambda * l2;`,
     definition:
       "Mathematically equivalent to L2 regularization for plain SGD, but not for adaptive optimizers like Adam — which is why AdamW applies the decay directly to weights (\"decoupled\") rather than through the gradient. Typical values: 0.01–0.1.",
     formula: "θ ← θ − η(∇L + λθ)",
+    where: [
+      ["θ", "model parameters"],
+      ["η", "learning rate"],
+      ["∇L", "gradient of the loss"],
+      ["λ", "weight-decay coefficient"],
+    ],
     js: `params = params.map((p, i) => p - lr * (g[i] + wd * p));`,
     related: ["regularization", "adam"],
   },
@@ -738,6 +967,10 @@ const hidden = matvec(W1, x).map(relu);`,
     definition:
       "Cheap and doesn't saturate for positive inputs, which largely solved vanishing gradients in deep nets. Downside: units stuck in the negative region get zero gradient and can \"die\". Leaky ReLU uses a small slope (e.g. 0.01x) for negatives.",
     formula: "ReLU(x) = max(0, x)",
+    where: [
+      ["x", "input value"],
+      ["ReLU", "rectified linear unit"],
+    ],
     js: `const relu = x => Math.max(0, x);
 const leakyRelu = (x, a = 0.01) => (x > 0 ? x : a * x);`,
     related: ["activation-function", "gelu", "vanishing-gradient"],
@@ -751,6 +984,13 @@ const leakyRelu = (x, a = 0.01) => (x > 0 ? x : a * x);`,
     definition:
       "GELU(x) = x·Φ(x), where Φ is the standard Gaussian CDF — it weights inputs by how likely they are to be positive. SiLU/Swish is x·sigmoid(x), very similar in shape. SwiGLU (LLaMA, PaLM) is a gated variant: Swish(xW) ⊙ (xV).",
     formula: "GELU(x) ≈ 0.5x(1 + tanh(√(2/π)(x + 0.044715x³)))",
+    where: [
+      ["x", "input value"],
+      ["GELU", "Gaussian error linear unit"],
+      ["π", "the constant 3.14159…"],
+      ["0.5, 0.044715", "constants of the tanh approximation"],
+      ["tanh", "hyperbolic tangent"],
+    ],
     js: `const gelu = x => 0.5 * x * (1 + Math.tanh(Math.sqrt(2 / Math.PI) * (x + 0.044715 * x ** 3)));
 const silu = x => x / (1 + Math.exp(-x));`,
     related: ["relu", "activation-function", "sigmoid", "gaussian"],
@@ -779,6 +1019,12 @@ gbNeeded(7e9, 4);  // 3.5`,
     definition:
       "Careful: FLOPs (lowercase s, plural) is an amount of work; FLOPS or FLOP/s is a rate (hardware speed). A useful rule of thumb: training a transformer costs about 6 × parameters × training tokens FLOPs; a forward pass costs about 2 × parameters per token.",
     formula: "C_train ≈ 6 · N · D",
+    where: [
+      ["C_train", "total training compute in FLOPs"],
+      ["N", "number of model parameters"],
+      ["D", "number of training tokens"],
+      ["6", "≈ 2 FLOPs per parameter per token forward, 4 backward"],
+    ],
     js: `const trainFlops = (params, tokens) => 6 * params * tokens;
 trainFlops(7e9, 2e12); // 8.4e22`,
     related: ["scaling-laws", "parameters", "big-o"],
@@ -792,6 +1038,14 @@ trainFlops(7e9, 2e12); // 8.4e22`,
     definition:
       "Kaplan et al. (2020) found loss falls predictably as a power law in parameters, data and compute. Hoffmann et al. (2022, \"Chinchilla\") showed many models were undertrained and that compute-optimal training uses roughly 20 tokens per parameter. Labs use scaling laws to predict a big run's performance from small runs.",
     formula: "L(N, D) ≈ E + A/N^α + B/D^β",
+    where: [
+      ["L(N, D)", "predicted loss"],
+      ["N", "number of parameters"],
+      ["D", "number of training tokens"],
+      ["E", "irreducible loss (noise floor of the data)"],
+      ["A, B", "fitted constants"],
+      ["α, β", "fitted exponents"],
+    ],
     related: ["parameters", "flops", "pretraining"],
   },
   {
@@ -823,6 +1077,15 @@ trainFlops(7e9, 2e12); // 8.4e22`,
     definition:
       "Instead of updating a big d×d weight matrix W, LoRA freezes W and learns ΔW = BA where B is d×r and A is r×d with r tiny (e.g. 8). This cuts trainable parameters by 1000×+, and adapters can be swapped at serving time. QLoRA does this on top of a 4-bit quantized base model.",
     formula: "W' = W + (α/r) · BA,   B ∈ ℝ^{d×r}, A ∈ ℝ^{r×d}",
+    where: [
+      ["W'", "the adapted weight matrix used after fine-tuning"],
+      ["W", "the original pretrained weights (frozen)"],
+      ["B, A", "two small trainable matrices whose product BA is the update"],
+      ["BA", "the low-rank update (a d×d matrix)"],
+      ["α", "scaling hyperparameter"],
+      ["r", "rank of the update, small (e.g. 8)"],
+      ["d", "layer width (model dimension)"],
+    ],
     js: `// Trainable params: full vs LoRA for a 4096x4096 layer
 4096 * 4096;          // 16,777,216
 2 * 4096 * 8;         // 65,536 with rank r = 8`,
@@ -837,6 +1100,12 @@ trainFlops(7e9, 2e12); // 8.4e22`,
     definition:
       "Weights are trained in 32/16-bit floats but can often be stored as 8- or 4-bit integers with a per-block scale factor, with modest quality loss. This is what lets large models run on laptops and phones (llama.cpp's GGUF, GPTQ, AWQ). bf16 is a 16-bit float format with fp32's range, standard for training.",
     formula: "q = round(w / s),   w ≈ q · s",
+    where: [
+      ["w", "original floating-point weight"],
+      ["q", "quantized integer value"],
+      ["s", "scale factor shared by a block of weights"],
+      ["round", "round to the nearest integer"],
+    ],
     js: `function quantizeInt8(w) {
   const s = Math.max(...w.map(Math.abs)) / 127;
   return { q: Int8Array.from(w, x => Math.round(x / s)), s };
@@ -853,6 +1122,13 @@ const dequant = ({ q, s }) => Array.from(q, x => x * s);`,
     definition:
       "The student learns from the teacher's full output distribution (soft targets, often softened with temperature) rather than just the correct label, which carries richer information (\"cat is a bit like dog, nothing like car\"). Produces smaller, faster models that keep much of the teacher's quality.",
     formula: "L = KL(softmax(z_T/τ) ‖ softmax(z_S/τ))",
+    where: [
+      ["L", "distillation loss"],
+      ["z_T", "teacher model's logits"],
+      ["z_S", "student model's logits"],
+      ["τ", "temperature; higher softens both distributions"],
+      ["softmax", "turns logits into probabilities"],
+    ],
     related: ["kl-divergence", "temperature", "quantization", "fine-tuning"],
   },
   {
@@ -876,6 +1152,13 @@ const dequant = ({ q, s }) => Array.from(q, x => x * s);`,
     definition:
       "The policy π(a|s) maps states to action probabilities. The agent acts in an environment, receives rewards, and updates the policy to maximise expected cumulative (discounted) reward. Policy-gradient methods directly push up the probability of actions that led to high reward. Used for games, robotics and LLM alignment (RLHF) and reasoning training.",
     formula: "J(π) = 𝔼_π[Σₜ γᵗ rₜ]",
+    where: [
+      ["J(π)", "expected total reward of policy π (what RL maximizes)"],
+      ["π", "the policy: how the agent picks actions"],
+      ["𝔼_π", "average over trajectories produced by following π"],
+      ["rₜ", "reward received at step t"],
+      ["γ", "discount factor (e.g. 0.99): future rewards count less"],
+    ],
     js: `let state = env.reset();
 while (!done) {
   const action = sample(policy(state));
@@ -893,6 +1176,13 @@ while (!done) {
     definition:
       "Three stages: (1) supervised fine-tune; (2) collect human comparisons of pairs of responses and train a reward model to predict which is preferred; (3) optimise the LLM with RL (typically PPO) to maximise that reward, with a KL penalty to stay close to the original model. RLAIF swaps human labels for AI-generated ones (e.g. Constitutional AI).",
     formula: "max_π 𝔼[r(x, y)] − β · KL(π ‖ π_ref)",
+    where: [
+      ["max_π", "choose the policy π that maximizes the expression"],
+      ["π", "the language model being trained (the policy)"],
+      ["π_ref", "the frozen starting model"],
+      ["r(x, y)", "reward model's score for response y to prompt x"],
+      ["β", "strength of the KL penalty"],
+    ],
     related: ["reward-model", "ppo", "dpo", "alignment", "kl-divergence", "fine-tuning"],
   },
   {
@@ -904,6 +1194,14 @@ while (!done) {
     definition:
       "Given a prompt and two responses where humans preferred one, the reward model is trained so the preferred response gets the higher score, using the Bradley–Terry loss. It then serves as an automatic judge for RL. Policies can learn to exploit its blind spots (\"reward hacking\").",
     formula: "L = −log σ(r(x, y_w) − r(x, y_l))",
+    where: [
+      ["L", "training loss"],
+      ["r", "the reward model's score"],
+      ["x", "the prompt"],
+      ["y_w", "the preferred (winning) response"],
+      ["y_l", "the rejected (losing) response"],
+      ["σ", "sigmoid: turns the score difference into a probability"],
+    ],
     js: `const rmLoss = (rChosen, rRejected) => -Math.log(sigmoid(rChosen - rRejected));`,
     related: ["rlhf", "dpo", "sigmoid"],
   },
@@ -916,6 +1214,15 @@ while (!done) {
     definition:
       "PPO (Schulman et al., 2017) computes the probability ratio between new and old policy for each action and clips it to [1−ε, 1+ε], preventing destructive large updates. Simple and robust, it became the default for RLHF. GRPO (DeepSeek) drops the value network and uses group-relative rewards instead.",
     formula: "L = 𝔼[min(ρA, clip(ρ, 1−ε, 1+ε)A)],  ρ = π_new / π_old",
+    where: [
+      ["L", "PPO objective"],
+      ["ρ", "probability ratio of the action under the new vs old policy"],
+      ["π_new", "updated policy"],
+      ["π_old", "policy before this update"],
+      ["A", "advantage: how much better the action was than expected"],
+      ["ε", "clip range, e.g. 0.2"],
+      ["clip(ρ, 1−ε, 1+ε)", "limit ρ to [1−ε, 1+ε] so updates stay small"],
+    ],
     related: ["reinforcement-learning", "rlhf"],
   },
   {
@@ -927,6 +1234,15 @@ while (!done) {
     definition:
       "Rafailov et al. (2023) showed the RLHF objective can be rewritten as a simple classification loss on (chosen, rejected) pairs, using the policy and a frozen reference model. Simpler and more stable than PPO-based RLHF; widely used for open models.",
     formula: "L = −log σ(β[log π(y_w)/π_ref(y_w) − log π(y_l)/π_ref(y_l)])",
+    where: [
+      ["L", "DPO loss"],
+      ["π", "the model being trained"],
+      ["π_ref", "frozen reference model"],
+      ["y_w", "preferred response"],
+      ["y_l", "rejected response"],
+      ["β", "how strongly to deviate from the reference"],
+      ["σ", "sigmoid function"],
+    ],
     related: ["rlhf", "reward-model", "sigmoid"],
   },
   {
@@ -1067,6 +1383,14 @@ for (;;) {
     definition:
       "Given a positive pair (two views of the same image, an image and its caption) and many negatives, the InfoNCE loss is a softmax cross-entropy that asks the model to pick the true partner among the batch. CLIP trained image and text encoders this way, giving a shared embedding space for both.",
     formula: "L = −log [exp(sim(a, p)/τ) / Σₖ exp(sim(a, kₖ)/τ)]",
+    where: [
+      ["L", "InfoNCE loss"],
+      ["a", "anchor example"],
+      ["p", "its positive (matching) partner"],
+      ["kₖ", "candidate k in the batch (the positive plus all negatives)"],
+      ["sim", "similarity function, usually cosine similarity"],
+      ["τ", "temperature"],
+    ],
     related: ["embedding", "cosine-similarity", "softmax", "temperature"],
   },
   {

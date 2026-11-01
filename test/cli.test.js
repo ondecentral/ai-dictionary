@@ -12,6 +12,8 @@ test("looks up a term", () => {
   assert.equal(r.status, 0);
   assert.match(r.stdout, /Softmax/);
   assert.match(r.stdout, /In JavaScript/);
+  assert.match(r.stdout, /where/);
+  assert.match(r.stdout, /Notation used in the formula/);
 });
 
 test("unknown term exits 1 with suggestions on stderr", () => {

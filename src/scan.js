@@ -13,11 +13,23 @@ const SCAN_IGNORE = new Set([
   "support", "target", "targets", "tools", "uncertainty", "weights", "params", "cosine", "deterministic",
   "nondeterministic", "seed", "expectation", "experts", "router", "baseline", "decode", "prefill",
   "representation space", "test time", "annotation",
+  // Glossary terms that are ordinary words in prose.
+  "action", "algorithm", "angle", "autonomy", "basis", "bit", "chunking", "classification", "coefficient",
+  "combination", "complement", "constant", "constraint", "converse", "corpus", "cycle", "dataset",
+  "decoding", "degree", "dimension", "domain", "edge", "element", "episode", "equation", "event",
+  "expression", "feature", "field", "function", "graph", "group", "layer", "limit", "line", "margin",
+  "mode", "model", "moment", "noise", "outcome", "padding", "parameter", "path", "plane", "point",
+  "population", "precision", "probability", "proof", "range", "recall", "relation", "residual", "return",
+  "ring", "root", "sample", "sequence", "series", "set", "signal", "similar", "span", "state",
+  "statistics", "subset", "tree", "union", "variable", "weight", "batch", "planner", "accuracy",
+  "accountability", "fairness", "transparency", "latency", "throughput", "trace", "tangent",
+  "symmetry", "proposition", "recursion", "vocabulary", "inequality", "integer", "estimator",
 ]);
 
 // A name is matched case-sensitively when it looks like an acronym
 // ("RAG", "MoE", "LoRA") so we don't match "rag" or "moe" in ordinary text.
-const isAcronym = name => (name.match(/[A-Z]/g) ?? []).length >= 2 && !/\s/.test(name);
+// Hyphenated names like "Self-Attention" are phrases, not acronyms.
+const isAcronym = name => (name.match(/[A-Z]/g) ?? []).length >= 2 && !/[\s-]/.test(name);
 
 let matcher;
 function buildMatcher() {

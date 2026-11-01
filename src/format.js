@@ -1,3 +1,5 @@
+import { explainFormula } from "./notation.js";
+
 // Terminal rendering. Colors are disabled when output isn't a TTY,
 // when NO_COLOR is set, or with --no-color.
 
@@ -32,6 +34,22 @@ export function wrap(text, width = termWidth(), indent = "") {
 
 const indentBlock = (text, indent) => text.split("\n").map(l => indent + l).join("\n");
 
+// Visible width, ignoring combining accents (the hat in m̂) and counting 𝔼 as one.
+const visibleLength = s => [...s.replace(/\p{M}/gu, "")].length;
+
+/** Two-column legend: symbol, then its explanation wrapped beside it. */
+function legend(rows, s, indent = "  ") {
+  const width = Math.min(16, Math.max(...rows.map(([k]) => visibleLength(k))));
+  return rows
+    .map(([key, text, dim]) => {
+      const body = wrap(text, termWidth(), " ".repeat(indent.length + width + 3)).trimStart();
+      const styled = dim ? s.gray(body) : body;
+      const pad = visibleLength(key) > width ? `\n${" ".repeat(indent.length + width + 3)}` : " ".repeat(width - visibleLength(key) + 3);
+      return `${indent}${s.yellow(key)}${pad}${styled}`;
+    })
+    .join("\n");
+}
+
 const categoryLabel = (c, s) => (c === "ai" ? s.magenta("[ai]") : s.cyan("[math]"));
 
 export function formatEntry(entry, s, { getTerm } = {}) {
@@ -40,10 +58,18 @@ export function formatEntry(entry, s, { getTerm } = {}) {
   if (entry.aliases.length) out.push(wrap(s.gray(`aka: ${entry.aliases.join(", ")}`)));
   out.push("");
   out.push(wrap(s.bold(entry.short), termWidth(), "  "));
-  out.push("");
-  out.push(wrap(entry.definition, termWidth(), "  "));
+  if (entry.definition) {
+    out.push("");
+    out.push(wrap(entry.definition, termWidth(), "  "));
+  }
+  const explained = explainFormula(entry);
   if (entry.formula) {
-    out.push("", s.yellow("Formula"), indentBlock(entry.formula, "  "));
+    out.push("", s.yellow("Formula"), indentBlock(s.bold(entry.formula), "  "), "");
+    out.push(s.gray("  where"));
+    out.push(legend([
+      ...explained.where,
+      ...explained.operators.map(sym => [sym.symbol, sym.short, true]),
+    ], s, "    "));
   }
   if (entry.js) {
     out.push("", s.green("In JavaScript"), s.dim(indentBlock(entry.js, "  ")));
@@ -51,6 +77,10 @@ export function formatEntry(entry, s, { getTerm } = {}) {
   if (entry.related?.length) {
     const names = entry.related.map(id => getTerm?.(id)?.term ?? id);
     out.push("", wrap(`${s.gray("Related:")} ${names.join(", ")}`));
+  }
+  if (explained.notation.length) {
+    out.push("", s.gray("Notation used in the formula") + s.gray("  (more: aidict sym <symbol>)"));
+    out.push(legend(explained.notation.map(sym => [sym.symbol, sym.meaning]), s));
   }
   return out.join("\n");
 }

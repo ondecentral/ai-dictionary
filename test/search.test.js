@@ -14,6 +14,15 @@ test("exact, alias, case and plural lookups", () => {
   assert.equal(id("mixture of experts"), "mixture-of-experts");
 });
 
+test("glossary terms: own entries, merges and acronyms", () => {
+  assert.equal(id("AdamW"), "adamw");
+  assert.ok(lookup("AdamW").entry.related.includes("adam"));
+  assert.equal(id("Direct Preference Optimization"), "dpo", "acronym expansion merges into curated DPO");
+  assert.equal(id("PCA"), "principal-component-analysis");
+  assert.equal(id("NLP"), "natural-language-processing");
+  assert.equal(id("heteroscedasticity"), "heteroscedasticity");
+});
+
 test("typos still find the term", () => {
   assert.equal(id("sofmax"), "softmax");
   assert.equal(id("backpropogation"), "backpropagation");
